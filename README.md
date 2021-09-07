@@ -9,7 +9,7 @@
 
 ## Installation
 
-To get started, install the plugin using composer:
+To get started, install the package using composer:
 
 ```bash
 composer require nekofar/slim-test --dev
