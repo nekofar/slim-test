@@ -31,7 +31,8 @@
         "phpstan/phpstan-strict-rules": "^0.12.11",
         "roave/security-advisories": "dev-latest",
         "slim/psr7": "^1.4",
-        "slim/slim": "^4.8"
+        "slim/slim": "^4.8",
+        "thecodingmachine/phpstan-strict-rules": "^0.12.1"
     },
     "config": {
         "preferred-install": "dist",
