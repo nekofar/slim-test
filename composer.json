@@ -21,6 +21,7 @@
     ],
     "require": {
         "php": "^7.3 || ^8.0",
+        "php-di/slim-bridge": "^3.1",
         "phpunit/phpunit": "^9.5",
         "selective/test-traits": "^1.1",
         "slim/psr7": "^1.4",
@@ -30,7 +31,6 @@
         "ext-json": "*",
         "ergebnis/phpstan-rules": "^0.15.3",
         "friendsofphp/php-cs-fixer": "^3.1",
-        "php-di/slim-bridge": "^3.1",
         "phpstan/phpstan": "^0.12.98",
         "phpstan/phpstan-strict-rules": "^0.12.11",
         "roave/security-advisories": "dev-latest",
