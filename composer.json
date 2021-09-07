@@ -1,18 +1,47 @@
 {
     "name": "nekofar/slim-test",
-    "description": "Slim Framework test helper built on top of the PHPUnit test framework",
     "type": "library",
+    "description": "Slim Framework test helper built on top of the PHPUnit test framework",
+    "keywords": [
+        "php",
+        "framework",
+        "phpunit",
+        "unit",
+        "test",
+        "testing",
+        "plugin",
+        "slim"
+    ],
     "license": "MIT",
-    "autoload": {
-        "psr-4": {
-            "Nekofar\\Slim\\Test\\": "src/"
-        }
-    },
     "authors": [
         {
             "name": "Milad Nekofar",
             "email": "milad@nekofar.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": "^7.3 || ^8.0"
+    },
+    "config": {
+        "preferred-install": "dist",
+        "sort-packages": true
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.x-dev"
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Nekofar\\Slim\\Test\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tests\\": "tests/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "scripts": {}
 }
