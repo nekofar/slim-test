@@ -22,6 +22,9 @@
     "require": {
         "php": "^7.3 || ^8.0"
     },
+    "require-dev": {
+        "slim/slim": "^4.8"
+    },
     "config": {
         "preferred-install": "dist",
         "sort-packages": true
