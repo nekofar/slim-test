@@ -23,7 +23,8 @@
         "php": "^7.3 || ^8.0",
         "phpunit/phpunit": "^9.5",
         "selective/test-traits": "^1.1",
-        "slim/psr7": "^1.4"
+        "slim/psr7": "^1.4",
+        "slim/slim": "^4.8"
     },
     "require-dev": {
         "ext-json": "*",
@@ -33,7 +34,6 @@
         "phpstan/phpstan": "^0.12.98",
         "phpstan/phpstan-strict-rules": "^0.12.11",
         "roave/security-advisories": "dev-latest",
-        "slim/slim": "^4.8",
         "thecodingmachine/phpstan-strict-rules": "^0.12.1"
     },
     "config": {
