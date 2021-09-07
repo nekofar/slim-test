@@ -26,6 +26,7 @@
     },
     "require-dev": {
         "ergebnis/phpstan-rules": "^0.15.3",
+        "friendsofphp/php-cs-fixer": "^3.1",
         "php-di/slim-bridge": "^3.1",
         "phpstan/phpstan": "^0.12.98",
         "phpstan/phpstan-strict-rules": "^0.12.11",
