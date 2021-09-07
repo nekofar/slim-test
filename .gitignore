@@ -1,3 +1,12 @@
+*.swo
+*.swp
+.idea/*
+.idea/codeStyleSettings.xml
+.php-cs-fixer.cache
+.phpunit.result.cache
+.temp/coverage.php
+/.php-cs-fixer.php
 /vendor/
 composer.lock
 composer.phar
+coverage.xml
