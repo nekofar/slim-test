@@ -23,6 +23,7 @@
         "php": "^7.3 || ^8.0"
     },
     "require-dev": {
+        "slim/psr7": "^1.4",
         "slim/slim": "^4.8"
     },
     "config": {
