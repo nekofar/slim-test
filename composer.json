@@ -25,6 +25,7 @@
         "selective/test-traits": "^1.1"
     },
     "require-dev": {
+        "ext-json": "*",
         "ergebnis/phpstan-rules": "^0.15.3",
         "friendsofphp/php-cs-fixer": "^3.1",
         "php-di/slim-bridge": "^3.1",
@@ -56,5 +57,15 @@
     },
     "minimum-stability": "dev",
     "prefer-stable": true,
-    "scripts": {}
+    "scripts": {
+        "lint": "php-cs-fixer fix -v",
+        "test": [
+            "@test:lint",
+            "@test:types",
+            "@test:unit"
+        ],
+        "test:lint": "php-cs-fixer fix -v --dry-run",
+        "test:types": "phpstan analyse --ansi",
+        "test:unit": "phpunit"
+    }
 }
