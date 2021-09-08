@@ -23,7 +23,8 @@ Requires Slim Framework 4 and PHP 7.3 or newer.
 use Nekofar\Slim\Test\Traits\AppTestTrait;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 
-class TestCase extends BaseTestCase {
+class TestCase extends BaseTestCase 
+{
     use AppTestTrait;
     
     protected function setUp(): void
