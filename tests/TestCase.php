@@ -9,15 +9,16 @@ use Fig\Http\Message\StatusCodeInterface as StatusCode;
 use Nekofar\Slim\Test\Traits\AppTestTrait;
 use PHPUnit\Framework\TestCase as BaseTestCase;
 use Psr\Http\Message\ResponseInterface as Response;
-use Psr\Http\Message\ServerRequestFactoryInterface;
 use Psr\Http\Message\ServerRequestInterface as Request;
 use Slim\Factory\AppFactory;
-use Slim\Psr7\Factory\ServerRequestFactory;
 
 abstract class TestCase extends BaseTestCase
 {
     use AppTestTrait;
 
+    /**
+     * Setup test environment.
+     */
     final protected function setUp(): void
     {
         parent::setUp();
@@ -26,19 +27,16 @@ abstract class TestCase extends BaseTestCase
         $container = new Container();
 
         // Configure the application via container
-        $app = AppFactory::createFromContainer($container);
+        $this->setUpApp(AppFactory::createFromContainer($container));
 
-        // Add Routing Middleware
-        $app->addRoutingMiddleware();
-
-        // Add Error Middleware
-        $app->addErrorMiddleware(false, false, false);
-
-        $this->setUpApp($app);
-
+        // Setup requires routes and middlewares for testing
         $this->setUpRoutes();
+        $this->setUpMiddlewares();
     }
 
+    /**
+     * Setup routes for Slim app.
+     */
     final protected function setUpRoutes(): void
     {
         $this->app->any('/text', function (Request $request, Response $response): Response {
@@ -80,5 +78,17 @@ abstract class TestCase extends BaseTestCase
         $this->app->post('/unprocessable', function (Request $request, Response $response): Response {
             return $response->withStatus(StatusCode::STATUS_UNPROCESSABLE_ENTITY);
         });
+    }
+
+    /**
+     * Setup middlewares for Slim app.
+     */
+    final protected function setUpMiddlewares(): void
+    {
+        // Add Routing Middleware
+        $this->app->addRoutingMiddleware();
+
+        // Add Error Middleware
+        $this->app->addErrorMiddleware(false, false, false);
     }
 }
