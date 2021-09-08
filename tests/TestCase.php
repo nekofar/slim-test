@@ -25,11 +25,6 @@ abstract class TestCase extends BaseTestCase
         // Create Container using PHP-DI
         $container = new Container();
 
-        // Add custom request factory
-        $container->set(ServerRequestFactoryInterface::class, function (): ServerRequestFactory {
-            return new ServerRequestFactory();
-        });
-
         // Configure the application via container
         $app = AppFactory::createFromContainer($container);
 
