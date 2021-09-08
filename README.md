@@ -15,6 +15,41 @@ To get started, install the package using composer:
 composer require nekofar/slim-test --dev
 ```
 
+Requires Slim Framework 4 and PHP 7.3 or newer.
+
+## Usage
+
+```php
+use Nekofar\Slim\Test\Traits\AppTestTrait;
+use PHPUnit\Framework\TestCase as BaseTestCase;
+
+class TestCase extends BaseTestCase {
+    use AppTestTrait;
+    
+    protected function setUp(): void
+    {
+        $app = require __DIR__ . '/../config/bootstrap.php';
+        
+        $this->setUpApp($app);
+    }
+    
+    public function testHomePage(): void
+    {
+        $this->get('/')
+            ->assertOk()
+            ->assertSee('Welcome');
+    }
+}
+```
+
+## Contributing
+
+Please see [CONTRIBUTING](CONTRIBUTING.md) for details.
+
+## License
+
+The MIT License (MIT). Please see [License File](LICENSE) for more information.
+
 ---
 [icon-packagist]: https://img.shields.io/packagist/v/nekofar/slim-test.svg
 [icon-php-version]: https://img.shields.io/packagist/php-v/nekofar/slim-test.svg
