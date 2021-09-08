@@ -33,7 +33,7 @@ jobs:
       run: composer update --${{ matrix.dependency-version }} --no-interaction --no-progress --ansi
 
     - name: Run unit tests by phpunit
-      run: ./vendor/bin/phpunit --testdox
+      run: ./vendor/bin/phpunit --testdox --coverage-clover coverage.xml
 
     - name: Collect test coverage
       uses: codecov/codecov-action@v2
