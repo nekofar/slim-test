@@ -21,6 +21,7 @@
     ],
     "require": {
         "php": "^7.3 || ^8.0",
+        "dms/phpunit-arraysubset-asserts": "^0.3.0",
         "phpunit/phpunit": "^9.5",
         "selective/test-traits": "^1.1",
         "slim/psr7": "^1.4",
