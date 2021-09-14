@@ -74,13 +74,9 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAGetRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $response = $this->getJson('/json')
+        $this->getJson('/json')
             ->assertOk()
-            ->assertJson();
-
-        $responseData = json_decode((string) $response->getBody());
-        self::assertObjectHasAttribute('hello', $responseData);
-        self::assertEquals('world', $responseData->hello);
+            ->assertJson(['hello' => 'world']);
     }
 
     /**
@@ -88,13 +84,9 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPostRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $response = $this->postJson('/json')
+        $this->postJson('/json')
             ->assertOk()
-            ->assertJson();
-
-        $responseData = json_decode((string) $response->getBody());
-        self::assertObjectHasAttribute('hello', $responseData);
-        self::assertEquals('world', $responseData->hello);
+            ->assertJson(['hello' => 'world']);
     }
 
     /**
@@ -102,13 +94,9 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPutRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $response = $this->putJson('/json')
+        $this->putJson('/json')
             ->assertOk()
-            ->assertJson();
-
-        $responseData = json_decode((string) $response->getBody());
-        self::assertObjectHasAttribute('hello', $responseData);
-        self::assertEquals('world', $responseData->hello);
+            ->assertJson(['hello' => 'world']);
     }
 
     /**
@@ -116,13 +104,9 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPatchRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $response = $this->patchJson('/json')
+        $this->patchJson('/json')
             ->assertOk()
-            ->assertJson();
-
-        $responseData = json_decode((string) $response->getBody());
-        self::assertObjectHasAttribute('hello', $responseData);
-        self::assertEquals('world', $responseData->hello);
+            ->assertJson(['hello' => 'world']);
     }
 
     /**
@@ -130,13 +114,9 @@ final class TestResponseTest extends TestCase
      */
     public function testSendADeleteRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $response = $this->deleteJson('/json')
+        $this->deleteJson('/json')
             ->assertOk()
-            ->assertJson();
-
-        $responseData = json_decode((string) $response->getBody());
-        self::assertObjectHasAttribute('hello', $responseData);
-        self::assertEquals('world', $responseData->hello);
+            ->assertJson(['hello' => 'world']);
     }
 
     /**
@@ -144,13 +124,9 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAnOptionsRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $response = $this->optionsJson('/json')
+        $this->optionsJson('/json')
             ->assertOk()
-            ->assertJson();
-
-        $responseData = json_decode((string) $response->getBody());
-        self::assertObjectHasAttribute('hello', $responseData);
-        self::assertEquals('world', $responseData->hello);
+            ->assertJson(['hello' => 'world']);
     }
 
     /**
