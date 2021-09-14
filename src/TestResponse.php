@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Nekofar\Slim\Test;
 
+use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use Fig\Http\Message\StatusCodeInterface;
 use PHPUnit\Framework\Assert;
 use Slim\Psr7\Response;
@@ -13,6 +14,8 @@ use Slim\Psr7\Response;
  */
 final class TestResponse
 {
+    use ArraySubsetAsserts;
+
     /**
      * The response to delegate to.
      *
@@ -167,10 +170,16 @@ final class TestResponse
 
     /**
      * Assert that the response is a superset of the given JSON.
+     *
+     * @param array<int|string, mixed> $value
      */
-    public function assertJson(): self
+    public function assertJson(array $value = [], bool $strict = false): self
     {
-        Assert::assertJson((string) $this->getBody());
+        $json = (string) $this->getBody();
+        Assert::assertJson($json);
+
+        $data = json_decode($json, true);
+        self::assertArraySubset($value, $data, $strict);
 
         return $this;
     }
