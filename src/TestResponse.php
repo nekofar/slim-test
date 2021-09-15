@@ -37,7 +37,7 @@ final class TestResponse
      *
      * @return static
      */
-    public static function fromBaseResponse(Response $response): TestResponse
+    public static function fromBaseResponse(Response $response): self
     {
         return new static($response);
     }
@@ -171,6 +171,8 @@ final class TestResponse
      * Assert that the response is a superset of the given JSON.
      *
      * @param array<int|string, mixed> $value
+     *
+     * @throws Throwable
      */
     public function assertJson(array $value = [], bool $strict = false): self
     {
