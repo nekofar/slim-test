@@ -8,6 +8,60 @@ use Fig\Http\Message\StatusCodeInterface;
 
 final class TestResponseTest extends TestCase
 {
+    public function testAssertOk(): void
+    {
+        $this->get('/status/200')
+            ->assertOk();
+    }
+
+    public function testAssertCreated(): void
+    {
+        $this->post('/status/201')
+            ->assertCreated();
+    }
+
+    public function testAssertNotFound(): void
+    {
+        $this->post('/status/404')
+            ->assertNotFound();
+    }
+
+    public function testAssertForbidden(): void
+    {
+        $this->post('/status/403')
+            ->assertForbidden();
+    }
+
+    public function testAssertUnauthorized(): void
+    {
+        $this->post('/status/401')
+            ->assertUnauthorized();
+    }
+
+    public function testAssertUnprocessable(): void
+    {
+        $this->post('/status/422')
+            ->assertUnprocessable();
+    }
+
+    public function testAssertNoContentAsserts204StatusCodeByDefault(): void
+    {
+        $this->post('/status/204')
+            ->assertNoContent();
+    }
+
+    public function testAssertNoContentAssertsExpectedStatusCode(): void
+    {
+        $this->post('/status/418')
+            ->assertNoContent(StatusCodeInterface::STATUS_IM_A_TEAPOT);
+    }
+
+    public function testAssertStatus(): void
+    {
+        $this->post('/status/500')
+            ->assertStatus(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+    }
+
     /**
      * @testdox Send a get request and receive text in response
      */
