@@ -62,6 +62,66 @@ final class TestResponseTest extends TestCase
             ->assertStatus(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 
+    public function testAssertJsonWithArray(): void
+    {
+        $this->deleteJson('/json/two')
+            ->assertJson(['foo' => 'bar']);
+    }
+
+    public function testAssertJsonWithNull(): void
+    {
+        $this->putJson('/json/two')
+            ->assertJson();
+    }
+
+    public function testAssertSimilarJsonWithMixed(): void
+    {
+        $this->get('/json/two')
+            ->assertSimilarJson(['baz' => 'qux', 'foo' => 'bar']);
+    }
+
+    public function testAssertExactJsonWithMixedWhenDataIsExactlySame(): void
+    {
+        $this->postJson('/json/two')
+            ->assertSimilarJson(['foo' => 'bar', 'baz' => 'qux']);
+    }
+
+    public function testAssertExactJsonWithMixedWhenDataIsSimilar(): void
+    {
+        $this->getJson('/json/two')
+            ->assertExactJson(['foo' => 'bar', 'baz' => 'qux']);
+    }
+
+    public function testAssertJsonPath(): void
+    {
+        $this->get('/json/one')
+            ->assertJsonPath('hello', 'world');
+
+        $this->post('/json/third')
+            ->assertJsonPath('0.foo', 'bar');
+    }
+
+    public function testAssertJsonFragment(): void
+    {
+        $this->getJson('/json/two')
+            ->assertJsonFragment(['foo' => 'bar']);
+
+        $this->patchJson('/json/two')
+            ->assertJsonFragment(['baz' => 'qux']);
+    }
+
+    public function testAssertJsonCount(): void
+    {
+        $this->getJson('/json/one')
+            ->assertJsonCount(1);
+
+        $this->getJson('/json/two')
+            ->assertJsonCount(2);
+
+        $this->getJson('/json/third')
+            ->assertJsonCount(2, '0');
+    }
+
     /**
      * @testdox Send a get request and receive text in response
      */
