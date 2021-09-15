@@ -87,7 +87,7 @@ trait HttpResponseJsonAssertsTrait
      */
     public function assertJsonCount(int $count, string $key = ''): self
     {
-        $this->decodeResponseJson()->assertCount($count, $key);
+        $this->decodeResponseJson()->assertCount($count, $key !== '' ? $key : null);
 
         return $this;
     }
