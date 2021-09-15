@@ -67,6 +67,6 @@
         ],
         "test:lint": "php-cs-fixer fix -v --dry-run",
         "test:types": "phpstan analyse --ansi",
-        "test:unit": "phpunit --testdox"
+        "test:unit": "phpunit"
     }
 }
