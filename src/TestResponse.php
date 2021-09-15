@@ -196,6 +196,20 @@ final class TestResponse
     }
 
     /**
+     * Assert that the response has the exact given JSON.
+     *
+     * @param array<int|string, mixed> $data
+     *
+     * @throws Throwable
+     */
+    public function assertExactJson(array $data): self
+    {
+        $this->decodeResponseJson()->assertExact($data);
+
+        return $this;
+    }
+
+    /**
      * Validate and return the decoded response JSON.
      *
      * @throws Throwable
