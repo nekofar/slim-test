@@ -238,6 +238,18 @@ final class TestResponse
     }
 
     /**
+     * Assert that the response JSON has the expected count of items at the given key.
+     *
+     * @throws Throwable
+     */
+    public function assertJsonCount(int $count, string $key = ''): self
+    {
+        $this->decodeResponseJson()->assertCount($count, $key);
+
+        return $this;
+    }
+
+    /**
      * Validate and return the decoded response JSON.
      *
      * @throws Throwable
