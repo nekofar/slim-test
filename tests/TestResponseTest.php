@@ -204,4 +204,14 @@ final class TestResponseTest extends TestCase
             ->assertHeaderMissing('X-Test')
             ->assertHeader('Authorization', 'Basic ' . base64_encode('test:123456'));
     }
+
+    /**
+     * @testdox Send a post request with json data and assert value and type exists at the given path in the response
+     */
+    public function testT(): void
+    {
+        $this->getJson('/json')
+            ->assertOk()
+            ->assertJsonPath('hello', 'world');
+    }
 }
