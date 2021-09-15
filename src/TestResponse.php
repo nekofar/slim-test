@@ -4,18 +4,17 @@ declare(strict_types=1);
 
 namespace Nekofar\Slim\Test;
 
-use DMS\PHPUnitExtensions\ArraySubset\ArraySubsetAsserts;
 use Fig\Http\Message\StatusCodeInterface;
+use Illuminate\Testing\AssertableJsonString;
 use PHPUnit\Framework\Assert;
 use Slim\Psr7\Response;
+use Throwable;
 
 /**
  * @mixin Response
  */
 final class TestResponse
 {
-    use ArraySubsetAsserts;
-
     /**
      * The response to delegate to.
      *
@@ -175,13 +174,27 @@ final class TestResponse
      */
     public function assertJson(array $value = [], bool $strict = false): self
     {
-        $json = (string) $this->getBody();
-        Assert::assertJson($json);
-
-        $data = json_decode($json, true);
-        self::assertArraySubset($value, $data, $strict);
+        $this->decodeResponseJson()->assertSubset($value, $strict);
 
         return $this;
+    }
+
+    /**
+     * Validate and return the decoded response JSON.
+     *
+     * @throws Throwable
+     */
+    public function decodeResponseJson(): AssertableJsonString
+    {
+        $testJson = new AssertableJsonString((string) $this->getBody());
+
+        $decodedResponse = $testJson->json();
+
+        if ($decodedResponse === false || is_null($decodedResponse)) {
+            Assert::fail('Invalid JSON was returned from the route.');
+        }
+
+        return $testJson;
     }
 
     /**
