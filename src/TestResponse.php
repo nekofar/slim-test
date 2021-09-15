@@ -224,6 +224,20 @@ final class TestResponse
     }
 
     /**
+     * Assert that the response contains the given JSON fragment.
+     *
+     * @param array<int|string, mixed> $data
+     *
+     * @throws Throwable
+     */
+    public function assertJsonFragment(array $data): self
+    {
+        $this->decodeResponseJson()->assertFragment($data);
+
+        return $this;
+    }
+
+    /**
      * Validate and return the decoded response JSON.
      *
      * @throws Throwable
