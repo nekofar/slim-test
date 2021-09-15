@@ -210,6 +210,20 @@ final class TestResponse
     }
 
     /**
+     * Assert that the response has the similar JSON as given.
+     *
+     * @param array<int|string, mixed> $data
+     *
+     * @throws Throwable
+     */
+    public function assertSimilarJson(array $data): self
+    {
+        $this->decodeResponseJson()->assertSimilar($data);
+
+        return $this;
+    }
+
+    /**
      * Validate and return the decoded response JSON.
      *
      * @throws Throwable
