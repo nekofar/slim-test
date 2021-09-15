@@ -13,7 +13,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAGetRequestAndReceiveTextInResponse(): void
     {
-        $this->get('/text')
+        $this->get('/text/plain')
             ->assertOk()
             ->assertSee('hello, world')
             ->assertDontSee('see, not');
@@ -24,7 +24,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPostRequestAndReceiveTextInResponse(): void
     {
-        $this->post('/text')
+        $this->post('/text/plain')
             ->assertOk()
             ->assertSee('hello, world');
     }
@@ -34,7 +34,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPutRequestAndReceiveTextInResponse(): void
     {
-        $this->put('/text')
+        $this->put('/text/plain')
             ->assertOk()
             ->assertSee('hello, world');
     }
@@ -44,7 +44,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPatchRequestAndReceiveTextInResponse(): void
     {
-        $this->patch('/text')
+        $this->patch('/text/plain')
             ->assertOk()
             ->assertSee('hello, world');
     }
@@ -54,7 +54,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendADeleteRequestAndReceiveTextInResponse(): void
     {
-        $this->delete('/text')
+        $this->delete('/text/plain')
             ->assertOk()
             ->assertSee('hello, world');
     }
@@ -64,7 +64,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAnOptionsRequestAndReceiveTextInResponse(): void
     {
-        $this->options('/text')
+        $this->options('/text/plain')
             ->assertOk()
             ->assertSee('hello, world');
     }
@@ -74,7 +74,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAGetRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $this->getJson('/json')
+        $this->getJson('/json/one')
             ->assertOk()
             ->assertJson(['hello' => 'world']);
     }
@@ -84,7 +84,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPostRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $this->postJson('/json')
+        $this->postJson('/json/one')
             ->assertOk()
             ->assertJson(['hello' => 'world']);
     }
@@ -94,7 +94,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPutRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $this->putJson('/json')
+        $this->putJson('/json/one')
             ->assertOk()
             ->assertJson(['hello' => 'world']);
     }
@@ -104,7 +104,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAPatchRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $this->patchJson('/json')
+        $this->patchJson('/json/one')
             ->assertOk()
             ->assertJson(['hello' => 'world']);
     }
@@ -114,7 +114,7 @@ final class TestResponseTest extends TestCase
      */
     public function testSendADeleteRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $this->deleteJson('/json')
+        $this->deleteJson('/json/one')
             ->assertOk()
             ->assertJson(['hello' => 'world']);
     }
@@ -124,51 +124,9 @@ final class TestResponseTest extends TestCase
      */
     public function testSendAnOptionsRequestWithJsonDataAndReceiveJsonInResponse(): void
     {
-        $this->optionsJson('/json')
+        $this->optionsJson('/json/one')
             ->assertOk()
             ->assertJson(['hello' => 'world']);
-    }
-
-    /**
-     * @testdox Send a request and receive not found status in response
-     */
-    public function testSendARequestAndReceiveNotFoundStatusInResponse(): void
-    {
-        $this->post('/')->assertNotFound();
-    }
-
-    /**
-     * @testdox Send a request and receive created status in response
-     */
-    public function testSendARequestAndReceiveCreatedStatusInResponse(): void
-    {
-        $this->post('/created')
-            ->assertCreated()
-            ->assertNoContent(StatusCodeInterface::STATUS_CREATED);
-    }
-
-    /**
-     * @testdox Send a request and receive forbidden status in response
-     */
-    public function testSendARequestAndReceiveForbiddenStatusInResponse(): void
-    {
-        $this->post('/forbidden')->assertForbidden();
-    }
-
-    /**
-     * @testdox Send a request and receive unauthorized status in response
-     */
-    public function testSendARequestAndReceiveUnauthorizedStatusInResponse(): void
-    {
-        $this->post('/unauthorized')->assertUnauthorized();
-    }
-
-    /**
-     * @testdox Send a request and receive unprocessable status in response
-     */
-    public function testSendARequestAndReceiveUnprocessableStatusInResponse(): void
-    {
-        $this->post('/unprocessable')->assertUnprocessable();
     }
 
     /**
@@ -177,7 +135,7 @@ final class TestResponseTest extends TestCase
     public function testRequestWithHeaderAndGetResponseHeaders(): void
     {
         $this->withHeader('X-Test', 'Test')
-            ->get('/header')
+            ->get('/head/test')
             ->assertOk()
             ->assertHeader('X-Test', 'Test');
     }
@@ -188,7 +146,7 @@ final class TestResponseTest extends TestCase
     public function testSendARequestWithMultipleHeadersAtOnce(): void
     {
         $this->withHeaders(['X-Test' => 'Test'])
-            ->get('/header')
+            ->get('/head/test')
             ->assertOk()
             ->assertHeader('X-Test', 'Test');
     }
@@ -199,7 +157,7 @@ final class TestResponseTest extends TestCase
     public function testSendARequestWithAuthorizationTokenInTheHeaders(): void
     {
         $this->withToken(base64_encode('test:123456'), 'Basic')
-            ->get('/token')
+            ->get('/head/auth')
             ->assertOk()
             ->assertHeaderMissing('X-Test')
             ->assertHeader('Authorization', 'Basic ' . base64_encode('test:123456'));
@@ -210,7 +168,7 @@ final class TestResponseTest extends TestCase
      */
     public function testT(): void
     {
-        $this->getJson('/json')
+        $this->getJson('/json/one')
             ->assertOk()
             ->assertJsonPath('hello', 'world');
     }
