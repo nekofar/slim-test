@@ -7,6 +7,10 @@
 [![License][icon-license]][link-license]
 [![Twitter: nekofar][icon-twitter]][link-twitter]
 
+> Slim Framework test helper built on top of the PHPUnit test framework
+
+This library inspired by the [Illuminate Testing](https://github.com/illuminate/testing) component.
+
 ## Installation
 
 To get started, install the package using composer:
