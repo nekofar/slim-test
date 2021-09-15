@@ -182,6 +182,20 @@ final class TestResponse
     }
 
     /**
+     * Assert that the expected value and type exists at the given path in the response.
+     *
+     * @param mixed $expect
+     *
+     * @throws Throwable
+     */
+    public function assertJsonPath(string $path, $expect): self
+    {
+        $this->decodeResponseJson()->assertPath($path, $expect);
+
+        return $this;
+    }
+
+    /**
      * Validate and return the decoded response JSON.
      *
      * @throws Throwable
