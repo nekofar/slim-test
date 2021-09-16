@@ -2,6 +2,7 @@
 
 [![Packagist Version][icon-packagist]][link-packagist]
 [![PHP from Packagist][icon-php-version]][link-packagist]
+[![Packagist Downloads][icon-downloads]][link-packagist]
 [![Tests Status][icon-workflow]][link-workflow]
 [![Coverage Status][icon-coverage]][link-coverage]
 [![License][icon-license]][link-license]
@@ -62,6 +63,7 @@ The MIT License (MIT). Please see [License File](LICENSE) for more information.
 [icon-coverage]: https://codecov.io/gh/nekofar/slim-test/graph/badge.svg
 [icon-license]: https://img.shields.io/github/license/nekofar/slim-test.svg
 [icon-workflow]: https://img.shields.io/github/workflow/status/nekofar/slim-test/Tests
+[icon-downloads]: https://img.shields.io/packagist/dt/nekofar/slim-test
 
 [link-packagist]: https://packagist.org/packages/nekofar/slim-test
 [link-twitter]: https://twitter.com/nekofar
