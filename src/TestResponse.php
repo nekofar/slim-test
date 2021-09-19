@@ -48,9 +48,7 @@ final class TestResponse
      */
     public function assertOk(): self
     {
-        $this->assertStatus(StatusCodeInterface::STATUS_OK);
-
-        return $this;
+        return $this->assertStatus(StatusCodeInterface::STATUS_OK);
     }
 
     /**

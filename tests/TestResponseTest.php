@@ -160,7 +160,7 @@ final class TestResponseTest extends TestCase
             ->assertNoContent(StatusCodeInterface::STATUS_IM_A_TEAPOT);
     }
 
-    public function testAssertNoContentAssertsEmptyContent()
+    public function testAssertNoContentAssertsEmptyContent(): void
     {
         $this->expectException(AssertionFailedError::class);
         $this->expectExceptionMessage('Response content is not empty');
@@ -175,6 +175,7 @@ final class TestResponseTest extends TestCase
         $this->expectExceptionMessage('Failed asserting that 200 matches expected 500.');
 
         $this->post('/status/200')
+            ->assertNoContent(StatusCodeInterface::STATUS_OK)
             ->assertStatus(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 
@@ -354,5 +355,18 @@ final class TestResponseTest extends TestCase
             ->get('/head/auth')
             ->assertHeaderMissing('Authorization')
             ->assertHeader('Authorization', 'Basic ' . base64_encode('test:123456'));
+    }
+
+    public function testFlushHeaders(): void
+    {
+        $this->withHeader('X-Test', 'Test')
+            ->get('/head/test')
+            ->assertHeader('X-Test')
+            ->assertHeader('X-Test', 'Test');
+
+        $this->withHeader('X-Test', 'Test')
+            ->flushHeaders()
+            ->get('/head/test')
+            ->assertHeaderMissing('X-Test');
     }
 }
