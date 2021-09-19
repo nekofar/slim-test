@@ -56,14 +56,15 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "scripts": {
-        "lint": "php-cs-fixer fix -v",
+        "infection": "./vendor/bin/infection --threads=4",
+        "lint": "./vendor/bin/php-cs-fixer fix -v",
         "test": [
             "@test:lint",
             "@test:types",
             "@test:unit"
         ],
-        "test:lint": "php-cs-fixer fix -v --dry-run",
-        "test:types": "phpstan analyse --ansi",
-        "test:unit": "phpunit"
+        "test:lint": "./vendor/bin/php-cs-fixer fix -v --dry-run",
+        "test:types": "./vendor/bin/phpstan analyse --ansi",
+        "test:unit": "./vendor/bin/phpunit"
     }
 }
