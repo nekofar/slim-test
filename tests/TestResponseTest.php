@@ -355,4 +355,17 @@ final class TestResponseTest extends TestCase
             ->assertHeaderMissing('Authorization')
             ->assertHeader('Authorization', 'Basic ' . base64_encode('test:123456'));
     }
+
+    public function testFlushHeaders(): void
+    {
+        $this->withHeader('X-Test', 'Test')
+            ->get('/head/test')
+            ->assertHeader('X-Test')
+            ->assertHeader('X-Test', 'Test');
+
+        $this->withHeader('X-Test', 'Test')
+            ->flushHeaders()
+            ->get('/head/test')
+            ->assertHeaderMissing('X-Test');
+    }
 }
