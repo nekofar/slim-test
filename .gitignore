@@ -10,3 +10,5 @@
 composer.lock
 composer.phar
 coverage.xml
+infection.log
+.php_cs.cache
