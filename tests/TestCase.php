@@ -57,8 +57,10 @@ abstract class TestCase extends BaseTestCase
                 $response->getBody()->write('{"hello":"world"}');
             } elseif ('two' === $type) {
                 $response->getBody()->write('{"foo":"bar","baz":"qux"}');
-            } elseif ('third' === $type) {
+            } elseif ('three' === $type) {
                 $response->getBody()->write('[{"foo":"bar","baz":"qux"}]');
+            } elseif ('four' === $type) {
+                $response->getBody()->write('[{"one":1,"two":"2"}]');
             }
 
             return $response;

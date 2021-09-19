@@ -5,61 +5,193 @@ declare(strict_types=1);
 namespace Tests;
 
 use Fig\Http\Message\StatusCodeInterface;
+use PHPUnit\Framework\AssertionFailedError;
 
 final class TestResponseTest extends TestCase
 {
+    public function testGet(): void
+    {
+        $this->get('/text/plain')
+            ->assertSee('hello, world');
+    }
+
+    public function testPost(): void
+    {
+        $this->post('/text/plain')
+            ->assertSee('hello, world');
+    }
+
+    public function testPut(): void
+    {
+        $this->put('/text/plain')
+            ->assertSee('hello, world');
+    }
+
+    public function testPatch(): void
+    {
+        $this->patch('/text/plain')
+            ->assertSee('hello, world');
+    }
+
+    public function testDelete(): void
+    {
+        $this->delete('/text/plain')
+            ->assertSee('hello, world');
+    }
+
+    public function testOptions(): void
+    {
+        $this->options('/text/plain')
+            ->assertSee('hello, world');
+    }
+
+    public function testGetJson(): void
+    {
+        $this->getJson('/json/one')
+            ->assertJson(['hello' => 'world']);
+    }
+
+    public function testPostJson(): void
+    {
+        $this->postJson('/json/one')
+            ->assertJson(['hello' => 'world']);
+    }
+
+    public function testPutJson(): void
+    {
+        $this->putJson('/json/one')
+            ->assertJson(['hello' => 'world']);
+    }
+
+    public function testPatchJson(): void
+    {
+        $this->patchJson('/json/one')
+            ->assertJson(['hello' => 'world']);
+    }
+
+    public function testDeleteJson(): void
+    {
+        $this->deleteJson('/json/one')
+            ->assertJson(['hello' => 'world']);
+    }
+
+    public function testOptionsJson(): void
+    {
+        $this->optionsJson('/json/one')
+            ->assertJson(['hello' => 'world']);
+    }
+
+    public function testWithHeaders(): void
+    {
+        $this->withHeaders(['X-Test' => 'Test'])
+            ->get('/head/test')
+            ->assertHeader('X-Test', 'Test');
+    }
+
     public function testAssertOk(): void
     {
-        $this->get('/status/200')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 200.');
+
+        $this->get('/status/500')
             ->assertOk();
     }
 
     public function testAssertCreated(): void
     {
-        $this->post('/status/201')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 201.');
+
+        $this->post('/status/500')
             ->assertCreated();
     }
 
     public function testAssertNotFound(): void
     {
-        $this->post('/status/404')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 404.');
+
+        $this->post('/status/500')
             ->assertNotFound();
     }
 
     public function testAssertForbidden(): void
     {
-        $this->post('/status/403')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 403.');
+
+        $this->post('/status/500')
             ->assertForbidden();
     }
 
     public function testAssertUnauthorized(): void
     {
-        $this->post('/status/401')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 401.');
+
+        $this->post('/status/500')
             ->assertUnauthorized();
     }
 
     public function testAssertUnprocessable(): void
     {
-        $this->post('/status/422')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 422.');
+
+        $this->post('/status/500')
             ->assertUnprocessable();
     }
 
     public function testAssertNoContentAsserts204StatusCodeByDefault(): void
     {
-        $this->post('/status/204')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 204.');
+
+        $this->post('/status/500')
             ->assertNoContent();
     }
 
     public function testAssertNoContentAssertsExpectedStatusCode(): void
     {
-        $this->post('/status/418')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 418.');
+
+        $this->post('/status/500')
             ->assertNoContent(StatusCodeInterface::STATUS_IM_A_TEAPOT);
+    }
+
+    public function testAssertNoContentAssertsEmptyContent()
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Response content is not empty');
+
+        $this->get('/text/plain')
+            ->assertNoContent(StatusCodeInterface::STATUS_OK);
     }
 
     public function testAssertStatus(): void
     {
-        $this->post('/status/500')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 200 matches expected 500.');
+
+        $this->post('/status/200')
             ->assertStatus(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+    }
+
+    public function testAssertJsonStrict(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->getJson('/json/four')
+            ->assertJson(['one' => '1'], true);
+    }
+
+    public function testAssertJsonCanFail(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->getJson('/json/two')
+            ->assertJson(['foo' => 'baz']);
     }
 
     public function testAssertJsonWithArray(): void
@@ -70,8 +202,19 @@ final class TestResponseTest extends TestCase
 
     public function testAssertJsonWithNull(): void
     {
-        $this->putJson('/json/two')
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Invalid JSON was returned from the route.');
+
+        $this->get('/text/plain')
             ->assertJson();
+    }
+
+    public function testAssertSimilarJsonCanFail(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->get('/json/two')
+            ->assertSimilarJson(['bar' => 'qux', 'foo' => 'baz']);
     }
 
     public function testAssertSimilarJsonWithMixed(): void
@@ -92,13 +235,29 @@ final class TestResponseTest extends TestCase
             ->assertExactJson(['foo' => 'bar', 'baz' => 'qux']);
     }
 
+    public function testAssertExactJsonCanFail(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->getJson('/json/two')
+            ->assertExactJson(['foo' => 'baz', 'bar' => 'qux']);
+    }
+
     public function testAssertJsonPath(): void
     {
         $this->get('/json/one')
             ->assertJsonPath('hello', 'world');
 
-        $this->post('/json/third')
+        $this->post('/json/three')
             ->assertJsonPath('0.foo', 'bar');
+    }
+
+    public function testAssertJsonPathCanFail(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->get('/json/one')
+            ->assertJsonPath('hello', 'earth');
     }
 
     public function testAssertJsonFragment(): void
@@ -110,6 +269,14 @@ final class TestResponseTest extends TestCase
             ->assertJsonFragment(['baz' => 'qux']);
     }
 
+    public function testAssertJsonFragmentCanFail(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->getJson('/json/two')
+            ->assertJsonFragment(['foo' => 'baz']);
+    }
+
     public function testAssertJsonCount(): void
     {
         $this->getJson('/json/one')
@@ -118,172 +285,74 @@ final class TestResponseTest extends TestCase
         $this->getJson('/json/two')
             ->assertJsonCount(2);
 
-        $this->getJson('/json/third')
+        $this->getJson('/json/three')
             ->assertJsonCount(2, '0');
     }
 
-    /**
-     * @testdox Send a get request and receive text in response
-     */
-    public function testSendAGetRequestAndReceiveTextInResponse(): void
+    public function testAssertJsonCountCanFail(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->getJson('/json/one')
+            ->assertJsonCount(10);
+    }
+
+    public function testAssertSee(): void
     {
         $this->get('/text/plain')
-            ->assertOk()
-            ->assertSee('hello, world')
+            ->assertSee('hello, world');
+    }
+
+    public function testAssertSeeCanFail(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+
+        $this->get('/text/plain')
+            ->assertSee('hello, earth');
+    }
+
+    public function testAssertDontSee(): void
+    {
+        $this->get('/text/plain')
             ->assertDontSee('see, not');
     }
 
-    /**
-     * @testdox Send a post request and receive text in response
-     */
-    public function testSendAPostRequestAndReceiveTextInResponse(): void
+    public function testAssertDontSeeCanFail(): void
     {
-        $this->post('/text/plain')
-            ->assertOk()
-            ->assertSee('hello, world');
+        $this->expectException(AssertionFailedError::class);
+
+        $this->get('/text/plain')
+            ->assertDontSee('hello, world');
     }
 
-    /**
-     * @testdox Send a put request and receive text in response
-     */
-    public function testSendAPutRequestAndReceiveTextInResponse(): void
+    public function testAssertHeader(): void
     {
-        $this->put('/text/plain')
-            ->assertOk()
-            ->assertSee('hello, world');
-    }
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Header [X-Wrong] not present on response.');
 
-    /**
-     * @testdox Send a patch request and receive text in response
-     */
-    public function testSendAPatchRequestAndReceiveTextInResponse(): void
-    {
-        $this->patch('/text/plain')
-            ->assertOk()
-            ->assertSee('hello, world');
-    }
-
-    /**
-     * @testdox Send a delete request and receive text in response
-     */
-    public function testSendADeleteRequestAndReceiveTextInResponse(): void
-    {
-        $this->delete('/text/plain')
-            ->assertOk()
-            ->assertSee('hello, world');
-    }
-
-    /**
-     * @testdox Send an options request and receive text in response
-     */
-    public function testSendAnOptionsRequestAndReceiveTextInResponse(): void
-    {
-        $this->options('/text/plain')
-            ->assertOk()
-            ->assertSee('hello, world');
-    }
-
-    /**
-     * @testdox Send a get request with json data and receive json in response
-     */
-    public function testSendAGetRequestWithJsonDataAndReceiveJsonInResponse(): void
-    {
-        $this->getJson('/json/one')
-            ->assertOk()
-            ->assertJson(['hello' => 'world']);
-    }
-
-    /**
-     * @testdox Send a post request with json data and receive json in response
-     */
-    public function testSendAPostRequestWithJsonDataAndReceiveJsonInResponse(): void
-    {
-        $this->postJson('/json/one')
-            ->assertOk()
-            ->assertJson(['hello' => 'world']);
-    }
-
-    /**
-     * @testdox Send a put request with json data and receive json in response
-     */
-    public function testSendAPutRequestWithJsonDataAndReceiveJsonInResponse(): void
-    {
-        $this->putJson('/json/one')
-            ->assertOk()
-            ->assertJson(['hello' => 'world']);
-    }
-
-    /**
-     * @testdox Send a patch request with json data and receive json in response
-     */
-    public function testSendAPatchRequestWithJsonDataAndReceiveJsonInResponse(): void
-    {
-        $this->patchJson('/json/one')
-            ->assertOk()
-            ->assertJson(['hello' => 'world']);
-    }
-
-    /**
-     * @testdox Send a delete request with json data and receive json in response
-     */
-    public function testSendADeleteRequestWithJsonDataAndReceiveJsonInResponse(): void
-    {
-        $this->deleteJson('/json/one')
-            ->assertOk()
-            ->assertJson(['hello' => 'world']);
-    }
-
-    /**
-     * @testdox Send an options request with json data and receive json in response
-     */
-    public function testSendAnOptionsRequestWithJsonDataAndReceiveJsonInResponse(): void
-    {
-        $this->optionsJson('/json/one')
-            ->assertOk()
-            ->assertJson(['hello' => 'world']);
-    }
-
-    /**
-     * @testdox Send a request with header and get response headers
-     */
-    public function testRequestWithHeaderAndGetResponseHeaders(): void
-    {
         $this->withHeader('X-Test', 'Test')
             ->get('/head/test')
-            ->assertOk()
-            ->assertHeader('X-Test', 'Test');
+            ->assertHeader('X-Wrong');
     }
 
-    /**
-     * @testdox Send a request with multiple headers at once
-     */
-    public function testSendARequestWithMultipleHeadersAtOnce(): void
+    public function testAssertHeaderWithValue(): void
     {
-        $this->withHeaders(['X-Test' => 'Test'])
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Header [X-Test] was found, but value [Test] does not match [Wrong].');
+
+        $this->withHeader('X-Test', 'Test')
             ->get('/head/test')
-            ->assertOk()
-            ->assertHeader('X-Test', 'Test');
+            ->assertHeader('X-Test', 'Wrong');
     }
 
-    /**
-     * @testdox Send a request with authorization token in the headers
-     */
-    public function testSendARequestWithAuthorizationTokenInTheHeaders(): void
+    public function testAssertHeaderMissing(): void
     {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Unexpected header [Authorization] is present on response.');
+
         $this->withToken(base64_encode('test:123456'), 'Basic')
             ->get('/head/auth')
-            ->assertOk()
-            ->assertHeaderMissing('X-Test')
+            ->assertHeaderMissing('Authorization')
             ->assertHeader('Authorization', 'Basic ' . base64_encode('test:123456'));
-    }
-
-    /**
-     * @testdox Send a post request with json data and assert value and type exists at the given path in the response
-     */
-    public function testT(): void
-    {
-        $this->getJson('/json/one')
-            ->assertOk()
-            ->assertJsonPath('hello', 'world');
     }
 }
