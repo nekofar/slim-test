@@ -1,18 +1,208 @@
 # Changelog
-## [1.1.0](https://github.com/nekofar/slim-test/compare/v1.0.2...v1.1.0) (2021-09-15)
+All notable changes to this project will be documented in this file.
 
+## [1.1.6] - 2021-09-21
+
+### Miscellaneous Tasks
+
+- Replace `standard-version` by `git-cliff` for generate changelog
+
+## [1.1.5] - 2021-09-19
+
+### Refactor
+
+- Remove useless return on `assertOk`
+
+### Testing
+
+- Add new test for `flushHeaders` method
+- Chain over `assertNoContent` method
+
+## [1.1.4] - 2021-09-19
+
+### Miscellaneous Tasks
+
+- Add the configuration file for `infection`
+- Ignore infection output logs file
+- Ignore phpcs cache file
+- Exclude function signature mutators
+- Improve scripts and add infection
+
+### Testing
+
+- Cleanup and improve test response tests
+
+## [1.1.3] - 2021-09-18
+
+### Documentation
+
+- Add downloads badge linked to packagist
+- Add github actions to dependabot configuration file
+- Add target branch to dependabot configuration file
+- Add commit message scop to dependabot configuration file
+- Improve the dependabot configuration file
+
+## [1.1.2] - 2021-09-16
+
+### Miscellaneous Tasks
+
+- Replace required dev packages by `nekofar/dev-tools`
+- Remove useless includes from phpstan config file
+
+## [1.1.1] - 2021-09-15
+
+### Miscellaneous Tasks
+
+- Disable testdox on composer test script
+
+### Refactor
+
+- Solve an issue related to `assertJsonCount` method
+
+### Testing
+
+- Cleanup and simplify test case
+- Cleanup and improve test response tests
+- Add new tests for response status codes
+- Add new tests and improve previous tests
+
+## [1.1.0] - 2021-09-15
+
+### Documentation
+
+- Add some explanation description
 
 ### Features
 
-* add `assertExactJson` to assert that the response has the exact given JSON ([131d8d5](https://github.com/nekofar/slim-test/commit/131d8d5ce19a39d24e4364eb2869488d3b3e277c))
-* add `assertJsonCount` to assert that the response JSON has the expected count of items at the given key ([616c478](https://github.com/nekofar/slim-test/commit/616c4780e451606f920343fd9ca356776a5b5ce3))
-* add `assertJsonFragment` to assert that the response contains the given JSON fragment ([d2547d2](https://github.com/nekofar/slim-test/commit/d2547d221f7ff802681a0a122b3b9ee8c5787e4d))
-* add `assertJsonPath` to assert JSON response by path ([eb6013b](https://github.com/nekofar/slim-test/commit/eb6013bd9fb993b0373b6d6699e24bc434afc5d7))
-* add `assertSimilarJson` to assert that the response has the similar JSON as given ([77e72c7](https://github.com/nekofar/slim-test/commit/77e72c75fcdf827498effe6634538f4631dbacba))
+- Add `assertJsonPath` to assert JSON response by path
+- Add `assertExactJson` to assert that the response has the exact given JSON
+- Add `assertSimilarJson` to assert that the response has the similar JSON as given
+- Add `assertJsonFragment` to assert that the response contains the given JSON fragment
+- Add `assertJsonCount` to assert that the response JSON has the expected count of items at the given key
 
-### [1.0.1](https://github.com/nekofar/slim-test/compare/v1.0.0...v1.0.1) (2021-09-14)
+### Miscellaneous Tasks
 
+- Remove dms/phpunit-arraysubset-asserts package
+
+### Refactor
+
+- Add new `decodeResponseJson` method on test response for decoding json
+- Some minor improvement in test response
+- Split json response assertions into a trait
+- Add new assertions for http responces
+
+### Testing
+
+- Assert value and type exists at the given path in the response
+
+## [1.0.2] - 2021-09-14
+
+### Miscellaneous Tasks
+
+- Update selective/test-traits requirement || ^2.0
+
+### Refactor
+
+- Remove unused traits in tests
+
+## [1.0.1] - 2021-09-14
 
 ### Bug Fixes
 
-* solve functionality issue of `assertJson` ([ac5c2cb](https://github.com/nekofar/slim-test/commit/ac5c2cbd7e5a0a67b388a6a82060e0c59111e181))
+- Solve functionality issue of `assertJson`
+
+### Documentation
+
+- Update sample usage code
+- Add new template for pull requests
+- Add new dependabot configuration file
+
+### Miscellaneous Tasks
+
+- Add dms/phpunit-arraysubset-asserts package ^0.3.0
+- Merge changes related to bugfix back to develop
+
+### Testing
+
+- Make sure given array is subset of response json
+
+## [1.0.0] - 2021-09-08
+
+### Documentation
+
+- Update with contributing and usage info
+
+## [1.0.0-beta.3] - 2021-09-08
+
+### Refactor
+
+- Move setting up server request factory to the app test trait
+
+### Testing
+
+- Cleanup and optimize test case codes
+
+## [1.0.0-beta.2] - 2021-09-07
+
+### Miscellaneous Tasks
+
+- Add php-di/slim-bridge package ^3.1
+
+## [1.0.0-beta.1] - 2021-09-07
+
+### Documentation
+
+- Improve root readme file
+
+### Miscellaneous Tasks
+
+- Add slim/psr7 package ^1.4
+- Add slim/slim package ^4.8
+
+## [1.0.0-beta.0] - 2021-09-07
+
+### Documentation
+
+- Add the root license file
+- Add contributing guidelines
+- Add the readme include badges
+- Add github funding config file
+
+### Features
+
+- Add traits and test case and response
+
+### Miscellaneous Tasks
+
+- Update composer default configs
+- Add slim/slim package ^4.8
+- Add slim/psr7 package ^1.4
+- Add php-di/slim-bridge package ^3.1
+- Add roave/security-advisories package dev-latest 05f521f
+- Add selective/test-traits package ^1.1
+- Add phpunit/phpunit package ^9.5
+- Add phpunit configuration file
+- Add the editorconfig file
+- Add phpstan/phpstan package ^0.12.98
+- Add phpstan/phpstan-strict-rules package ^0.12.11
+- Add ergebnis/phpstan-rules package ^0.15.3
+- Add thecodingmachine/phpstan-strict-rules package v0.12.1
+- Add phpstan configuration file
+- Add friendsofphp/php-cs-fixer package ^3.1
+- Add phpcs configuration file
+- Add useless files to the gitignore
+- Add standard version configuration file
+- Add git attributes file include export ignores
+- Add required scripts to composer configs
+- Add testdox to test unit script
+
+### Refactor
+
+- Remove use test case and use traits instead
+
+### Testing
+
+- Setup app configs and setup test case
+- Add some tests for test response
+
+<!-- generated by git-cliff -->
