@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.7] - 2021-09-21
+
+### Miscellaneous Tasks
+
+- Update `nekofar/dev-tools` from ^1.0 to ^1.2
+
 ## [1.1.6] - 2021-09-21
 
 ### Miscellaneous Tasks
