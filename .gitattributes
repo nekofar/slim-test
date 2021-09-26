@@ -5,6 +5,8 @@
 .gitattributes           export-ignore
 .gitignore               export-ignore
 .versionrc               export-ignore
+cliff.toml               export-ignore
+infection.json.dist      export-ignore
 phpstan.neon             export-ignore
 phpunit.xml              export-ignore
 CHANGELOG.md             export-ignore
