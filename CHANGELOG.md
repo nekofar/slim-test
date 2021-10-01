@@ -1,6 +1,22 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.9] - 2021-10-01
+
+### Miscellaneous Tasks
+
+- Replace `phpunit` configuration with dist one
+
+## [1.1.8] - 2021-09-26
+
+### Documentation
+
+- Add missing file comments
+
+### Miscellaneous Tasks
+
+- Ignore `git-cliff` and `infection` configs from export
+
 ## [1.1.7] - 2021-09-21
 
 ### Miscellaneous Tasks
