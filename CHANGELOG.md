@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.11] - 2021-10-06
+
+### Miscellaneous Tasks
+
+- Update `illuminate/testing` requirements to ^8.63
+- Update `slim/slim` requirements to ^4.9
+- Update `slim/psr7` requirements to ^4.9
+
 ## [1.1.10] - 2021-10-01
 
 ### Miscellaneous Tasks
