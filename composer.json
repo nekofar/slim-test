@@ -25,7 +25,7 @@
         "phpunit/phpunit": "^9.5",
         "selective/test-traits": "^1.1 || ^2.0",
         "slim/psr7": "^1.4",
-        "slim/slim": "^4.8"
+        "slim/slim": "^4.9"
     },
     "require-dev": {
         "ext-json": "*",
