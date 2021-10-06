@@ -21,11 +21,11 @@
     ],
     "require": {
         "php": "^7.3 || ^8.0",
-        "illuminate/testing": "^8.61",
+        "illuminate/testing": "^8.63",
         "phpunit/phpunit": "^9.5",
         "selective/test-traits": "^1.1 || ^2.0",
-        "slim/psr7": "^1.4",
-        "slim/slim": "^4.8"
+        "slim/psr7": "^1.5",
+        "slim/slim": "^4.9"
     },
     "require-dev": {
         "ext-json": "*",
