@@ -31,6 +31,7 @@ jobs:
         shell: bash
         run: |
           r=$(cat ${{ steps.git-cliff.outputs.changelog }})
+          r="$(printf "$r" | tail -n +3)"
           r="${r//'%'/'%25'}"     # Multiline escape sequences for %
           r="${r//$'\n'/'%0A'}"   # Multiline escape sequences for '\n'
           r="${r//$'\r'/'%0D'}"   # Multiline escape sequences for '\r'
