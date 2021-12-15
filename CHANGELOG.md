@@ -1,6 +1,16 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.12] - 2021-12-15
+
+### Miscellaneous Tasks
+
+- Bump actions/checkout from 2.3.4 to 2.3.5
+- Bump actions/checkout from 2.3.5 to 2.4.0
+- Bump shivammathur/setup-php from 2.15.0 to 2.16.0
+- Bump actions/cache from 2.1.6 to 2.1.7
+- Update github funding configs
+
 ## [1.1.11] - 2021-10-06
 
 ### Miscellaneous Tasks
