@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [1.1.13] - 2021-12-16
+
+### Miscellaneous Tasks
+
+- Solve github funding broken link issue
+
 ## [1.1.12] - 2021-12-15
 
 ### Miscellaneous Tasks
