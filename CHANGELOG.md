@@ -1,6 +1,19 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### Documentation
+
+- Improve the dependabot configuration file
+
+### Miscellaneous Tasks
+
+- Bump orhun/git-cliff-action from 1.1.5 to 1.1.6
+- Bump shivammathur/setup-php from 2.16.0 to 2.17.1
+- Bump actions/checkout from 2.4.0 to 3
+- Change v3 to semver for `actions/checkout`
+
 ## [1.1.13] - 2021-12-16
 
 ### Miscellaneous Tasks
