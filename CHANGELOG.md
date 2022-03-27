@@ -1,7 +1,13 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [1.1.15] - 2022-03-27
+
+### Bug Fixes
+
+- Replace `Response` from `Slim` by `ResponseInterface`
+
+## [1.1.14] - 2022-03-19
 
 ### Documentation
 

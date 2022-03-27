@@ -14,7 +14,7 @@ namespace Nekofar\Slim\Test;
 use Fig\Http\Message\StatusCodeInterface;
 use Nekofar\Slim\Test\Traits\HttpResponseJsonAssertsTrait;
 use PHPUnit\Framework\Assert;
-use Slim\Psr7\Response;
+use Psr\Http\Message\ResponseInterface as Response;
 
 /**
  * @mixin Response
