@@ -20,7 +20,7 @@ To get started, install the package using composer:
 composer require nekofar/slim-test --dev
 ```
 
-Requires Slim Framework 4 and PHP 7.3 or newer.
+Requires Slim Framework 4 and PHP 8.0 or newer.
 
 ## Usage
 
