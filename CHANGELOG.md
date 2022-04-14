@@ -1,7 +1,7 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [2.0.1] - 2022-04-14
 
 ### Miscellaneous Tasks
 
