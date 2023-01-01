@@ -13,7 +13,6 @@ namespace Nekofar\Slim\Test\Traits;
 
 use Illuminate\Testing\AssertableJsonString;
 use PHPUnit\Framework\Assert;
-use Throwable;
 
 trait HttpResponseJsonAssertsTrait
 {
@@ -22,7 +21,7 @@ trait HttpResponseJsonAssertsTrait
      *
      * @param array<int|string, mixed> $value
      *
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function assertJson(array $value = [], bool $strict = false): self
     {
@@ -36,7 +35,7 @@ trait HttpResponseJsonAssertsTrait
      *
      * @param mixed $expect
      *
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function assertJsonPath(string $path, $expect): self
     {
@@ -50,7 +49,7 @@ trait HttpResponseJsonAssertsTrait
      *
      * @param array<int|string, mixed> $data
      *
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function assertExactJson(array $data): self
     {
@@ -64,7 +63,7 @@ trait HttpResponseJsonAssertsTrait
      *
      * @param array<int|string, mixed> $data
      *
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function assertSimilarJson(array $data): self
     {
@@ -78,7 +77,7 @@ trait HttpResponseJsonAssertsTrait
      *
      * @param array<int|string, mixed> $data
      *
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function assertJsonFragment(array $data): self
     {
@@ -90,7 +89,7 @@ trait HttpResponseJsonAssertsTrait
     /**
      * Assert that the response JSON has the expected count of items at the given key.
      *
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function assertJsonCount(int $count, string $key = ''): self
     {
@@ -102,7 +101,7 @@ trait HttpResponseJsonAssertsTrait
     /**
      * Validate and return the decoded response JSON.
      *
-     * @throws Throwable
+     * @throws \Throwable
      */
     public function decodeResponseJson(): AssertableJsonString
     {
