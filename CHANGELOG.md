@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.3] - 2023-01-01
+
+### Bug Fixes
+
+- Solve some minor issues and dependency update
+
 ## [2.0.2] - 2022-04-28
 
 ### Documentation
