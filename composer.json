@@ -23,7 +23,7 @@
         "php": "^8.0",
         "illuminate/testing": "^9.0",
         "phpunit/phpunit": "^9.0",
-        "selective/test-traits": "^2.0",
+        "selective/test-traits": "^2.0 || ^3.0",
         "slim/psr7": "^1.0",
         "slim/slim": "^4.0"
     },
