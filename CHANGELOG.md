@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [2.0.6] - 2023-01-31
+
+### Documentation
+
+- Update twitter badge due to depreciation
+
 ## [2.0.5] - 2023-01-01
 
 ### Documentation
