@@ -20,7 +20,7 @@
         }
     ],
     "require": {
-        "php": "^8.0",
+        "php": ">=8.1",
         "illuminate/testing": "^9.0",
         "phpunit/phpunit": "^9.0",
         "selective/test-traits": "^2.0 || ^3.0",
