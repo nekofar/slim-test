@@ -1,6 +1,15 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.0.0] - 2023-04-26
+
+### Miscellaneous Tasks
+
+- Bump `php` from `^8.0` to `>=8.1`
+- Bump nekofar/dev-tools from ^2.0 to ^3.0
+- Bump phpunit/phpunit from ^9.0 to ^10.0
+- Bump illuminate/testing from ^9.0 to ^10.0
+
 ## [2.0.6] - 2023-01-31
 
 ### Documentation
