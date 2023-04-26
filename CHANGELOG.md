@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.0.1] - 2023-04-26
+
+### Miscellaneous Tasks
+
+- Migrate phpunit configuration file
+
 ## [3.0.0] - 2023-04-26
 
 ### Miscellaneous Tasks
