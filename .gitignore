@@ -1,8 +1,10 @@
+*.bak
 *.swo
 *.swp
 .idea/*
 .idea/codeStyleSettings.xml
 .php-cs-fixer.cache
+.phpunit.cache
 .phpunit.result.cache
 .temp/coverage.php
 /.php-cs-fixer.php
