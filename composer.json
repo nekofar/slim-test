@@ -30,7 +30,7 @@
     "require-dev": {
         "ext-json": "*",
         "ergebnis/phpstan-rules": "^1.0",
-        "nekofar/dev-tools": "^2.0",
+        "nekofar/dev-tools": "^3.0",
         "php-di/slim-bridge": "^3.0",
         "phpstan/phpstan-strict-rules": "^1.0"
     },
