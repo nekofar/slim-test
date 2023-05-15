@@ -149,6 +149,15 @@ final class TestResponseTest extends TestCase
             ->assertUnprocessable();
     }
 
+    public function testAssertBadRequest(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 400.');
+
+        $this->post('/status/500')
+            ->assertBadRequest();
+    }
+
     public function testAssertNoContentAsserts204StatusCodeByDefault(): void
     {
         $this->expectException(AssertionFailedError::class);

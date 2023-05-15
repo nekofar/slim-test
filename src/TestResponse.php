@@ -103,11 +103,19 @@ final class TestResponse
     }
 
     /**
-     * Assert that the response has a 422 status code.
+     * Assert that the response has a 422 Unprocessable status code.
      */
     public function assertUnprocessable(): self
     {
         return $this->assertStatus(StatusCodeInterface::STATUS_UNPROCESSABLE_ENTITY);
+    }
+
+    /**
+     * Asserts that the response has a 400 Bad Request status code.
+     */
+    public function assertBadRequest(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_BAD_REQUEST);
     }
 
     /**
