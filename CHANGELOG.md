@@ -1,6 +1,24 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.1.0] - 2023-05-15
+
+### Features
+
+- Create `assertBadRequest` method for http bad requests
+- Create `assertGone` method for http gone status
+- Create `assertInternalServerError` method for http internal errors
+- Create `assertMethodNotAllowed` method for http method not allowed
+- Create `assertNotImplemented` method for http not implemented
+
+### Miscellaneous Tasks
+
+- Update ergebnis/phpstan-rules requirement || ^2.0 (#73)
+
+### Testing
+
+- Update `phpunit` configuration file
+
 ## [3.0.1] - 2023-04-26
 
 ### Miscellaneous Tasks
