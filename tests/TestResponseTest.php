@@ -158,6 +158,15 @@ final class TestResponseTest extends TestCase
             ->assertBadRequest();
     }
 
+    public function testAssertMethodNotAllowed(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 405.');
+
+        $this->post('/status/500')
+            ->assertMethodNotAllowed();
+    }
+
     public function testAssertGone(): void
     {
         $this->expectException(AssertionFailedError::class);

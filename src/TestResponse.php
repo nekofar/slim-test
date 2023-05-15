@@ -119,6 +119,14 @@ final class TestResponse
     }
 
     /**
+     * Asserts that the response has a 405 Method Not Allowed status code.
+     */
+    public function assertMethodNotAllowed(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_METHOD_NOT_ALLOWED);
+    }
+
+    /**
      * Asserts that the response has a 410 Gone status code.
      */
     public function assertGone(): self
