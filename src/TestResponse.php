@@ -127,6 +127,14 @@ final class TestResponse
     }
 
     /**
+     * Asserts that the response has a 500 Internal Server Error status code.
+     */
+    public function assertInternalServerError(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+    }
+
+    /**
      * Assert that the response has the given status code.
      */
     public function assertStatus(int $status): self

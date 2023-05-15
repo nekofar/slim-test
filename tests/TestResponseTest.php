@@ -167,6 +167,15 @@ final class TestResponseTest extends TestCase
             ->assertGone();
     }
 
+    public function testAssertInternalServerError(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 404 matches expected 500.');
+
+        $this->get('/status/404')
+            ->assertInternalServerError();
+    }
+
     public function testAssertNoContentAsserts204StatusCodeByDefault(): void
     {
         $this->expectException(AssertionFailedError::class);
