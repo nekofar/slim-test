@@ -103,11 +103,51 @@ final class TestResponse
     }
 
     /**
-     * Assert that the response has a 422 status code.
+     * Assert that the response has a 422 Unprocessable status code.
      */
     public function assertUnprocessable(): self
     {
         return $this->assertStatus(StatusCodeInterface::STATUS_UNPROCESSABLE_ENTITY);
+    }
+
+    /**
+     * Asserts that the response has a 400 Bad Request status code.
+     */
+    public function assertBadRequest(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_BAD_REQUEST);
+    }
+
+    /**
+     * Asserts that the response has a 405 Method Not Allowed status code.
+     */
+    public function assertMethodNotAllowed(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_METHOD_NOT_ALLOWED);
+    }
+
+    /**
+     * Asserts that the response has a 410 Gone status code.
+     */
+    public function assertGone(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_GONE);
+    }
+
+    /**
+     * Asserts that the response has a 500 Internal Server Error status code.
+     */
+    public function assertInternalServerError(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
+    }
+
+    /**
+     * Asserts that the response has a 501 Not Implemented status code.
+     */
+    public function assertNotImplemented(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_NOT_IMPLEMENTED);
     }
 
     /**

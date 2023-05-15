@@ -149,6 +149,51 @@ final class TestResponseTest extends TestCase
             ->assertUnprocessable();
     }
 
+    public function testAssertBadRequest(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 400.');
+
+        $this->post('/status/500')
+            ->assertBadRequest();
+    }
+
+    public function testAssertMethodNotAllowed(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 405.');
+
+        $this->post('/status/500')
+            ->assertMethodNotAllowed();
+    }
+
+    public function testAssertGone(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 410.');
+
+        $this->post('/status/500')
+            ->assertGone();
+    }
+
+    public function testAssertInternalServerError(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 404 matches expected 500.');
+
+        $this->get('/status/404')
+            ->assertInternalServerError();
+    }
+
+    public function testAssertNotImplemented(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 501.');
+
+        $this->get('/status/500')
+            ->assertNotImplemented();
+    }
+
     public function testAssertNoContentAsserts204StatusCodeByDefault(): void
     {
         $this->expectException(AssertionFailedError::class);
