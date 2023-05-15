@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.1.1] - 2023-05-15
+
+### Miscellaneous Tasks
+
+- Bump nekofar/dev-tools from ^3.0 to ^3.1
+
 ## [3.1.0] - 2023-05-15
 
 ### Features
