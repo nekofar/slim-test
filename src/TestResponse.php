@@ -143,6 +143,14 @@ final class TestResponse
     }
 
     /**
+     * Asserts that the response has a 501 Not Implemented status code.
+     */
+    public function assertNotImplemented(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_NOT_IMPLEMENTED);
+    }
+
+    /**
      * Assert that the response has the given status code.
      */
     public function assertStatus(int $status): self

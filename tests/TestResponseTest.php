@@ -185,6 +185,15 @@ final class TestResponseTest extends TestCase
             ->assertInternalServerError();
     }
 
+    public function testAssertNotImplemented(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 501.');
+
+        $this->get('/status/500')
+            ->assertNotImplemented();
+    }
+
     public function testAssertNoContentAsserts204StatusCodeByDefault(): void
     {
         $this->expectException(AssertionFailedError::class);
