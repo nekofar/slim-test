@@ -119,6 +119,14 @@ final class TestResponse
     }
 
     /**
+     * Asserts that the response has a 410 Gone status code.
+     */
+    public function assertGone(): self
+    {
+        return $this->assertStatus(StatusCodeInterface::STATUS_GONE);
+    }
+
+    /**
      * Assert that the response has the given status code.
      */
     public function assertStatus(int $status): self

@@ -158,6 +158,15 @@ final class TestResponseTest extends TestCase
             ->assertBadRequest();
     }
 
+    public function testAssertGone(): void
+    {
+        $this->expectException(AssertionFailedError::class);
+        $this->expectExceptionMessage('Failed asserting that 500 matches expected 410.');
+
+        $this->post('/status/500')
+            ->assertGone();
+    }
+
     public function testAssertNoContentAsserts204StatusCodeByDefault(): void
     {
         $this->expectException(AssertionFailedError::class);
