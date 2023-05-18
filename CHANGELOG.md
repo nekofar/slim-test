@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.0] - 2023-05-18
+
+### Features
+
+- Create `withBasicAuth` to set the request authentication credentials
+
 ## [3.1.1] - 2023-05-15
 
 ### Miscellaneous Tasks
