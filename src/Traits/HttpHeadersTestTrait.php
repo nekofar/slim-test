@@ -33,13 +33,13 @@ trait HttpHeadersTestTrait
     }
 
     /**
-     * Add a header to be sent with the request.
+     * Set the request authentication credentials using Basic Authentication.
      */
-    final public function withHeader(string $name, string $value): self
+    final public function withBasicAuth(string $username, string $password): self
     {
-        $this->defaultHeaders[$name] = $value;
+        $token = base64_encode($username . ':' . $password);
 
-        return $this;
+        return $this->withToken($token, 'Basic');
     }
 
     /**
@@ -48,6 +48,16 @@ trait HttpHeadersTestTrait
     final public function withToken(string $token, string $type = 'Bearer'): self
     {
         return $this->withHeader('Authorization', $type . ' ' . $token);
+    }
+
+    /**
+     * Add a header to be sent with the request.
+     */
+    final public function withHeader(string $name, string $value): self
+    {
+        $this->defaultHeaders[$name] = $value;
+
+        return $this;
     }
 
     /**
