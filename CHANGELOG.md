@@ -1,6 +1,17 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.1] - 2023-05-29
+
+### Documentation
+
+- Update the pull request template
+
+### Refactor
+
+- Add the test case class to warp traits
+- Solve some of type hint issues over traits
+
 ## [3.2.0] - 2023-05-18
 
 ### Features
