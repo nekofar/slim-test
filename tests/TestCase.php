@@ -13,15 +13,12 @@ namespace Tests;
 
 use DI\Bridge\Slim\Bridge;
 use DI\Container;
-use Nekofar\Slim\Test\Traits\AppTestTrait;
-use PHPUnit\Framework\TestCase as BaseTestCase;
+use Nekofar\Slim\Test\TestCase as BaseTestCase;
 use Psr\Http\Message\ResponseInterface as Response;
 use Psr\Http\Message\ServerRequestInterface as Request;
 
 abstract class TestCase extends BaseTestCase
 {
-    use AppTestTrait;
-
     /**
      * Setup test environment.
      */
