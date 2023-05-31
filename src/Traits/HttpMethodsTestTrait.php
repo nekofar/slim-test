@@ -19,12 +19,11 @@ use Psr\Http\Message\ServerRequestInterface;
 trait HttpMethodsTestTrait
 {
     /**
-     * @param ServerRequestInterface|MessageInterface $request
-     * @param array<string, mixed>                    $headers
+     * @param array<string, array<string>|string> $headers
      */
-    private function send($request, array $headers): TestResponse
+    private function send(MessageInterface|ServerRequestInterface $request, array $headers): TestResponse
     {
-        if (null !== $this->defaultHeaders) {
+        if (property_exists(static::class, 'defaultHeaders')) {
             $headers = array_merge($this->defaultHeaders, $headers);
         }
 
@@ -39,7 +38,7 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a GET request.
      *
-     * @param array<string, mixed> $headers
+     * @param array<string, array<string>|string> $headers
      */
     final public function get(string $uri, array $headers = []): TestResponse
     {
@@ -51,7 +50,7 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a GET request, expecting a JSON response.
      *
-     * @param array<string, mixed> $headers
+     * @param array<string, array<string>|string> $headers
      */
     final public function getJson(string $uri, array $headers = []): TestResponse
     {
@@ -63,8 +62,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a POST request.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function post(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -76,8 +75,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a POST request, expecting a JSON response.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function postJson(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -89,8 +88,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a PUT request.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function put(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -102,8 +101,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a PUT request, expecting a JSON response.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function putJson(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -115,8 +114,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a PATCH request.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function patch(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -128,8 +127,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a PATCH request, expecting a JSON response.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function patchJson(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -141,8 +140,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a DELETE request.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function delete(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -154,8 +153,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with a DELETE request, expecting a JSON response.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function deleteJson(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -167,8 +166,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with an OPTIONS request.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function options(string $uri, array $data = [], array $headers = []): TestResponse
     {
@@ -180,8 +179,8 @@ trait HttpMethodsTestTrait
     /**
      * Visit the given URI with an OPTIONS request, expecting a JSON response.
      *
-     * @param array<string, mixed> $data
-     * @param array<string, mixed> $headers
+     * @param array<string, mixed>                $data
+     * @param array<string, array<string>|string> $headers
      */
     final public function optionsJson(string $uri, array $data = [], array $headers = []): TestResponse
     {

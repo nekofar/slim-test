@@ -31,10 +31,7 @@ trait AppTestTrait
     use HttpHeadersTestTrait;
     use HttpMethodsTestTrait;
 
-    /**
-     * @var App
-     */
-    protected $app;
+    protected App $app;
 
     final protected function setUpApp(App $app): void
     {

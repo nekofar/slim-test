@@ -1,6 +1,30 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.3] - 2023-05-31
+
+### Refactor
+
+- Add missing typehints for methods and properties
+- Use `property_exists` instead of `null` check for defaultHeaders
+
+## [3.2.2] - 2023-05-31
+
+### Refactor
+
+- Add mixed typehints directly instead doc-blocks
+
+## [3.2.1] - 2023-05-29
+
+### Documentation
+
+- Update the pull request template
+
+### Refactor
+
+- Add the test case class to warp traits
+- Solve some of type hint issues over traits
+
 ## [3.2.0] - 2023-05-18
 
 ### Features

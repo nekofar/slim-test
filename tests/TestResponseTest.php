@@ -52,36 +52,54 @@ final class TestResponseTest extends TestCase
             ->assertSee('hello, world');
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testGetJson(): void
     {
         $this->getJson('/json/one')
             ->assertJson(['hello' => 'world']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testPostJson(): void
     {
         $this->postJson('/json/one')
             ->assertJson(['hello' => 'world']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testPutJson(): void
     {
         $this->putJson('/json/one')
             ->assertJson(['hello' => 'world']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testPatchJson(): void
     {
         $this->patchJson('/json/one')
             ->assertJson(['hello' => 'world']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testDeleteJson(): void
     {
         $this->deleteJson('/json/one')
             ->assertJson(['hello' => 'world']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testOptionsJson(): void
     {
         $this->optionsJson('/json/one')
@@ -231,6 +249,9 @@ final class TestResponseTest extends TestCase
             ->assertStatus(StatusCodeInterface::STATUS_INTERNAL_SERVER_ERROR);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonStrict(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -239,6 +260,9 @@ final class TestResponseTest extends TestCase
             ->assertJson(['one' => '1'], true);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonCanFail(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -247,12 +271,18 @@ final class TestResponseTest extends TestCase
             ->assertJson(['foo' => 'baz']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonWithArray(): void
     {
         $this->deleteJson('/json/two')
             ->assertJson(['foo' => 'bar']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonWithNull(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -262,6 +292,9 @@ final class TestResponseTest extends TestCase
             ->assertJson();
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertSimilarJsonCanFail(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -270,24 +303,36 @@ final class TestResponseTest extends TestCase
             ->assertSimilarJson(['bar' => 'qux', 'foo' => 'baz']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertSimilarJsonWithMixed(): void
     {
         $this->get('/json/two')
             ->assertSimilarJson(['baz' => 'qux', 'foo' => 'bar']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertExactJsonWithMixedWhenDataIsExactlySame(): void
     {
         $this->postJson('/json/two')
             ->assertSimilarJson(['foo' => 'bar', 'baz' => 'qux']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertExactJsonWithMixedWhenDataIsSimilar(): void
     {
         $this->getJson('/json/two')
             ->assertExactJson(['foo' => 'bar', 'baz' => 'qux']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertExactJsonCanFail(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -296,6 +341,9 @@ final class TestResponseTest extends TestCase
             ->assertExactJson(['foo' => 'baz', 'bar' => 'qux']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonPath(): void
     {
         $this->get('/json/one')
@@ -305,6 +353,9 @@ final class TestResponseTest extends TestCase
             ->assertJsonPath('0.foo', 'bar');
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonPathCanFail(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -313,6 +364,9 @@ final class TestResponseTest extends TestCase
             ->assertJsonPath('hello', 'earth');
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonFragment(): void
     {
         $this->getJson('/json/two')
@@ -322,6 +376,9 @@ final class TestResponseTest extends TestCase
             ->assertJsonFragment(['baz' => 'qux']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonFragmentCanFail(): void
     {
         $this->expectException(AssertionFailedError::class);
@@ -330,6 +387,9 @@ final class TestResponseTest extends TestCase
             ->assertJsonFragment(['foo' => 'baz']);
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonCount(): void
     {
         $this->getJson('/json/one')
@@ -342,6 +402,9 @@ final class TestResponseTest extends TestCase
             ->assertJsonCount(2, '0');
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function testAssertJsonCountCanFail(): void
     {
         $this->expectException(AssertionFailedError::class);

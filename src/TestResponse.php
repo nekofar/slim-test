@@ -215,10 +215,8 @@ final class TestResponse
 
     /**
      * Dynamically access base response parameters.
-     *
-     * @return mixed
      */
-    public function __get(string $key)
+    public function __get(string $key): mixed
     {
         /* @phpstan-ignore-next-line */
         return $this->baseResponse->{$key};
@@ -239,10 +237,8 @@ final class TestResponse
      * Handle dynamic calls into macros or pass missing methods to the base response.
      *
      * @param array<string,mixed> $args
-     *
-     * @return mixed
      */
-    public function __call(string $method, array $args)
+    public function __call(string $method, array $args): mixed
     {
         /* @phpstan-ignore-next-line */
         return $this->baseResponse->{$method}(...$args);
