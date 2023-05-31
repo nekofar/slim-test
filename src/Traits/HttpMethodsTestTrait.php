@@ -23,7 +23,7 @@ trait HttpMethodsTestTrait
      */
     private function send(MessageInterface|ServerRequestInterface $request, array $headers): TestResponse
     {
-        if (null !== $this->defaultHeaders) {
+        if (property_exists(static::class, 'defaultHeaders')) {
             $headers = array_merge($this->defaultHeaders, $headers);
         }
 
