@@ -1,6 +1,12 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.2] - 2023-05-31
+
+### Refactor
+
+- Add mixed typehints directly instead doc-blocks
+
 ## [3.2.1] - 2023-05-29
 
 ### Documentation
