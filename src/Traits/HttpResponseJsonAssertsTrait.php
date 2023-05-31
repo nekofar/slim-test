@@ -33,11 +33,9 @@ trait HttpResponseJsonAssertsTrait
     /**
      * Assert that the expected value and type exists at the given path in the response.
      *
-     * @param mixed $expect
-     *
      * @throws \Throwable
      */
-    public function assertJsonPath(string $path, $expect): self
+    public function assertJsonPath(string $path, mixed $expect): self
     {
         $this->decodeResponseJson()->assertPath($path, $expect);
 
