@@ -18,7 +18,7 @@ trait HttpHeadersTestTrait
      *
      * @var array<string, string>
      */
-    protected $defaultHeaders = [];
+    protected array $defaultHeaders = [];
 
     /**
      * Define additional headers to be sent with the request.
