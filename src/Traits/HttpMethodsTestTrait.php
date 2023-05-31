@@ -19,10 +19,9 @@ use Psr\Http\Message\ServerRequestInterface;
 trait HttpMethodsTestTrait
 {
     /**
-     * @param ServerRequestInterface|MessageInterface $request
-     * @param array<string, array<string>|string>     $headers
+     * @param array<string, array<string>|string> $headers
      */
-    private function send($request, array $headers): TestResponse
+    private function send(MessageInterface|ServerRequestInterface $request, array $headers): TestResponse
     {
         if (null !== $this->defaultHeaders) {
             $headers = array_merge($this->defaultHeaders, $headers);
