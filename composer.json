@@ -1,77 +1,83 @@
 {
-    "name": "nekofar/slim-test",
-    "type": "library",
-    "description": "Slim Framework test helper built on top of the PHPUnit test framework",
-    "keywords": [
-        "php",
-        "framework",
-        "phpunit",
-        "unit",
-        "test",
-        "testing",
-        "plugin",
-        "slim"
-    ],
-    "license": "MIT",
-    "authors": [
-        {
-            "name": "Milad Nekofar",
-            "email": "milad@nekofar.com"
-        }
-    ],
-    "require": {
-        "php": ">=8.1",
-        "illuminate/testing": "^10.0",
-        "phpunit/phpunit": "^10.0",
-        "selective/test-traits": "^2.0 || ^3.0",
-        "slim/psr7": "^1.0",
-        "slim/slim": "^4.0"
-    },
-    "require-dev": {
-        "ext-json": "*",
-        "ergebnis/phpstan-rules": "^1.0 || ^2.0",
-        "nekofar/dev-tools": "^3.1",
-        "php-di/slim-bridge": "^3.0",
-        "phpstan/phpstan-strict-rules": "^1.0"
-    },
-    "config": {
-        "preferred-install": "dist",
-        "sort-packages": true,
-        "allow-plugins": {
-            "dealerdirect/phpcodesniffer-composer-installer": true,
-            "infection/extension-installer": true,
-            "pestphp/pest-plugin": true,
-            "phpstan/extension-installer": true,
-            "composer/installers": true
-        }
-    },
-    "extra": {
-        "branch-alias": {
-            "dev-master": "1.x-dev"
-        }
-    },
-    "autoload": {
-        "psr-4": {
-            "Nekofar\\Slim\\Test\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "Tests\\": "tests/"
-        }
-    },
-    "minimum-stability": "dev",
-    "prefer-stable": true,
-    "scripts": {
-        "infection": "./vendor/bin/infection --threads=4",
-        "lint": "./vendor/bin/php-cs-fixer fix -v",
-        "test": [
-            "@test:lint",
-            "@test:types",
-            "@test:unit"
-        ],
-        "test:lint": "./vendor/bin/php-cs-fixer fix -v --dry-run",
-        "test:types": "./vendor/bin/phpstan analyse --ansi",
-        "test:unit": "./vendor/bin/phpunit"
+  "name": "nekofar/slim-test",
+  "type": "library",
+  "description": "Slim Framework test helper built on top of the PHPUnit test framework",
+  "keywords": [
+    "php",
+    "framework",
+    "phpunit",
+    "unit",
+    "test",
+    "testing",
+    "plugin",
+    "slim"
+  ],
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Milad Nekofar",
+      "email": "milad@nekofar.com"
     }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "illuminate/testing": "^10.0",
+    "phpunit/phpunit": "^10.0",
+    "selective/test-traits": "^2.0 || ^3.0",
+    "slim/psr7": "^1.0",
+    "slim/slim": "^4.0"
+  },
+  "require-dev": {
+    "ext-json": "*",
+    "ergebnis/phpstan-rules": "^1.0 || ^2.0",
+    "nekofar/dev-tools": "^3.1",
+    "php-di/slim-bridge": "^3.0",
+    "phpstan/phpstan-strict-rules": "^1.0"
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "allow-plugins": {
+      "dealerdirect/phpcodesniffer-composer-installer": true,
+      "infection/extension-installer": true,
+      "pestphp/pest-plugin": true,
+      "phpstan/extension-installer": true,
+      "composer/installers": true
+    }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.x-dev"
+    }
+  },
+  "autoload": {
+    "psr-4": {
+      "Nekofar\\Slim\\Test\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "scripts": {
+    "infection": "./vendor/bin/infection --threads=4",
+    "lint": "./vendor/bin/php-cs-fixer fix -v",
+    "test": [
+      "@test:lint",
+      "@test:types",
+      "@test:unit"
+    ],
+    "test:lint": "./vendor/bin/php-cs-fixer fix -v --dry-run",
+    "test:types": "./vendor/bin/phpstan analyse --ansi",
+    "test:unit": "./vendor/bin/phpunit"
+  },
+  "funding": [
+    {
+      "type": "custom",
+      "url": "https://ud.me/nekofar.crypto"
+    }
+  ]
 }
