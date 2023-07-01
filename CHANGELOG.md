@@ -1,6 +1,14 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [3.2.4] - 2023-07-01
+
+### Documentation
+
+- Update crypto funding address over configs
+- Add funding to the composer configs
+- Add crypto donate badge to the project readme
+
 ## [3.2.3] - 2023-05-31
 
 ### Refactor
