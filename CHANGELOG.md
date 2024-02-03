@@ -1,5 +1,12 @@
 # Changelog
+
 All notable changes to this project will be documented in this file.
+
+## [3.2.5] - 2024-02-03
+
+### Documentation
+
+- Update badges on project readme file
 
 ## [3.2.4] - 2023-07-01
 
@@ -24,26 +31,20 @@ All notable changes to this project will be documented in this file.
 
 ## [3.2.1] - 2023-05-29
 
-### Documentation
-
-- Update the pull request template
-
 ### Refactor
 
 - Add the test case class to warp traits
 - Solve some of type hint issues over traits
+
+### Documentation
+
+- Update the pull request template
 
 ## [3.2.0] - 2023-05-18
 
 ### Features
 
 - Create `withBasicAuth` to set the request authentication credentials
-
-## [3.1.1] - 2023-05-15
-
-### Miscellaneous Tasks
-
-- Bump nekofar/dev-tools from ^3.0 to ^3.1
 
 ## [3.1.0] - 2023-05-15
 
@@ -55,28 +56,27 @@ All notable changes to this project will be documented in this file.
 - Create `assertMethodNotAllowed` method for http method not allowed
 - Create `assertNotImplemented` method for http not implemented
 
-### Miscellaneous Tasks
-
-- Update ergebnis/phpstan-rules requirement || ^2.0 (#73)
-
 ### Testing
 
 - Update `phpunit` configuration file
+
+### Miscellaneous Tasks
+
+- Change `open-pull-requests-limit` from 10 to 20
 
 ## [3.0.1] - 2023-04-26
 
 ### Miscellaneous Tasks
 
+- Change php version from 8.0 to 8.1 on `static` workflow
 - Migrate phpunit configuration file
 
 ## [3.0.0] - 2023-04-26
 
 ### Miscellaneous Tasks
 
-- Bump `php` from `^8.0` to `>=8.1`
-- Bump nekofar/dev-tools from ^2.0 to ^3.0
-- Bump phpunit/phpunit from ^9.0 to ^10.0
-- Bump illuminate/testing from ^9.0 to ^10.0
+- Add php version 8.2 to the `tests` workflow
+- Remove `php` version 8.0 from workflows
 
 ## [2.0.6] - 2023-01-31
 
@@ -96,10 +96,6 @@ All notable changes to this project will be documented in this file.
 
 - Solve some minor issues and update dependencies
 
-### Miscellaneous Tasks
-
-- Update selective/test-traits requirement || ^3.0
-
 ## [2.0.3] - 2023-01-01
 
 ### Bug Fixes
@@ -118,18 +114,41 @@ All notable changes to this project will be documented in this file.
 
 - Update `git-cliff` configuration
 
-## [2.0.0] - 2022-04-14
+## [2.0.0-alpha.3] - 2022-04-14
+
+### Miscellaneous Tasks
+
+- Remove php version `8.2` from tests workflow matrix
+
+## [2.0.0-alpha.2] - 2022-04-14
+
+### Miscellaneous Tasks
+
+- Update php version from `7.4` to `8.0` on static workflow
+
+## [2.0.0-alpha.1] - 2022-04-14
+
+### Miscellaneous Tasks
+
+- Remove php version `7.*` from tests workflow matrix
+- Update php version from `7.4` to `8.0` on static workflow
+
+## [2.0.0-alpha.0] - 2022-04-14
 
 ### Miscellaneous Tasks
 
 - Update `config.allow-plugins` on the `composer` configs
-- Remove support for php version `7.*`
 
 ## [1.1.15] - 2022-03-27
 
 ### Bug Fixes
 
 - Replace `Response` from `Slim` by `ResponseInterface`
+
+### Miscellaneous Tasks
+
+- Update `tests` and `static` workflows triggers
+- Add php version 8.1 to `tests` workflow matrix
 
 ## [1.1.14] - 2022-03-19
 
@@ -139,10 +158,8 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Bump orhun/git-cliff-action from 1.1.5 to 1.1.6
-- Bump shivammathur/setup-php from 2.16.0 to 2.17.1
-- Bump actions/checkout from 2.4.0 to 3
 - Change v3 to semver for `actions/checkout`
+- Update `dependabot` prefixes on configuration
 
 ## [1.1.13] - 2021-12-16
 
@@ -154,25 +171,17 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Bump actions/checkout from 2.3.4 to 2.3.5
-- Bump actions/checkout from 2.3.5 to 2.4.0
-- Bump shivammathur/setup-php from 2.15.0 to 2.16.0
-- Bump actions/cache from 2.1.6 to 2.1.7
+- Remove headlines of changelog from release notes
+- Mark pre-releases tags on release workflow
+- Improve and cleanup release bodies
+- Add cache action for caching composer packages
 - Update github funding configs
 
 ## [1.1.11] - 2021-10-06
 
 ### Miscellaneous Tasks
 
-- Update `illuminate/testing` requirements to ^8.63
-- Update `slim/slim` requirements to ^4.9
-- Update `slim/psr7` requirements to ^4.9
-
-## [1.1.10] - 2021-10-01
-
-### Miscellaneous Tasks
-
-- Upgrade `nekofar/dev-tools` from ^1.2 to ^1.3
+- Change workflow actions versions to fixed versions
 
 ## [1.1.9] - 2021-10-01
 
@@ -194,7 +203,7 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Update `nekofar/dev-tools` from ^1.0 to ^1.2
+- Add new workflow for create releases
 
 ## [1.1.6] - 2021-09-21
 
@@ -204,16 +213,20 @@ All notable changes to this project will be documented in this file.
 
 ## [1.1.5] - 2021-09-19
 
-### Refactor
-
-- Remove useless return on `assertOk`
-
 ### Testing
 
 - Add new test for `flushHeaders` method
 - Chain over `assertNoContent` method
 
+### Refactor
+
+- Remove useless return on `assertOk`
+
 ## [1.1.4] - 2021-09-19
+
+### Testing
+
+- Cleanup and improve test response tests
 
 ### Miscellaneous Tasks
 
@@ -222,10 +235,6 @@ All notable changes to this project will be documented in this file.
 - Ignore phpcs cache file
 - Exclude function signature mutators
 - Improve scripts and add infection
-
-### Testing
-
-- Cleanup and improve test response tests
 
 ## [1.1.3] - 2021-09-18
 
@@ -241,18 +250,9 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Replace required dev packages by `nekofar/dev-tools`
 - Remove useless includes from phpstan config file
 
 ## [1.1.1] - 2021-09-15
-
-### Miscellaneous Tasks
-
-- Disable testdox on composer test script
-
-### Refactor
-
-- Solve an issue related to `assertJsonCount` method
 
 ### Testing
 
@@ -261,11 +261,15 @@ All notable changes to this project will be documented in this file.
 - Add new tests for response status codes
 - Add new tests and improve previous tests
 
+### Refactor
+
+- Solve an issue related to `assertJsonCount` method
+
+### Miscellaneous Tasks
+
+- Disable testdox on composer test script
+
 ## [1.1.0] - 2021-09-15
-
-### Documentation
-
-- Add some explanation description
 
 ### Features
 
@@ -275,9 +279,9 @@ All notable changes to this project will be documented in this file.
 - Add `assertJsonFragment` to assert that the response contains the given JSON fragment
 - Add `assertJsonCount` to assert that the response JSON has the expected count of items at the given key
 
-### Miscellaneous Tasks
+### Testing
 
-- Remove dms/phpunit-arraysubset-asserts package
+- Assert value and type exists at the given path in the response
 
 ### Refactor
 
@@ -286,15 +290,15 @@ All notable changes to this project will be documented in this file.
 - Split json response assertions into a trait
 - Add new assertions for http responces
 
-### Testing
+### Documentation
 
-- Assert value and type exists at the given path in the response
-
-## [1.0.2] - 2021-09-14
+- Add some explanation description
 
 ### Miscellaneous Tasks
 
-- Update selective/test-traits requirement || ^2.0
+- 1.1.0
+
+## [1.0.2] - 2021-09-14
 
 ### Refactor
 
@@ -306,6 +310,10 @@ All notable changes to this project will be documented in this file.
 
 - Solve functionality issue of `assertJson`
 
+### Testing
+
+- Make sure given array is subset of response json
+
 ### Documentation
 
 - Update sample usage code
@@ -314,14 +322,53 @@ All notable changes to this project will be documented in this file.
 
 ### Miscellaneous Tasks
 
-- Add dms/phpunit-arraysubset-asserts package ^0.3.0
 - Merge changes related to bugfix back to develop
+- 1.0.1
+
+## [1.0.0] - 2021-09-08
+
+### Documentation
+
+- Update with contributing and usage info
+
+## [1.0.0-beta.3] - 2021-09-08
 
 ### Testing
 
-- Make sure given array is subset of response json
+- Cleanup and optimize test case codes
 
-## [1.0.0] - 2021-09-08
+### Refactor
+
+- Move setting up server request factory to the app test trait
+
+### Miscellaneous Tasks
+
+- Add coverage clover output for phpunit
+
+### Revert
+
+- Add php-di/slim-bridge package ^3.1
+
+## [1.0.0-beta.1] - 2021-09-07
+
+### Documentation
+
+- Improve root readme file
+
+## [1.0.0-beta.0] - 2021-09-07
+
+### Features
+
+- Add traits and test case and response
+
+### Testing
+
+- Setup app configs and setup test case
+- Add some tests for test response
+
+### Refactor
+
+- Remove use test case and use traits instead
 
 ### Documentation
 
@@ -329,49 +376,21 @@ All notable changes to this project will be documented in this file.
 - Add contributing guidelines
 - Add the readme include badges
 - Add github funding config file
-- Improve root readme file
-- Update with contributing and usage info
-
-### Features
-
-- Add traits and test case and response
 
 ### Miscellaneous Tasks
 
 - Update composer default configs
-- Add slim/slim package ^4.8
-- Add slim/psr7 package ^1.4
-- Add php-di/slim-bridge package ^3.1
-- Add roave/security-advisories package dev-latest 05f521f
-- Add selective/test-traits package ^1.1
-- Add phpunit/phpunit package ^9.5
 - Add phpunit configuration file
 - Add the editorconfig file
-- Add phpstan/phpstan package ^0.12.98
-- Add phpstan/phpstan-strict-rules package ^0.12.11
-- Add ergebnis/phpstan-rules package ^0.15.3
-- Add thecodingmachine/phpstan-strict-rules package v0.12.1
 - Add phpstan configuration file
-- Add friendsofphp/php-cs-fixer package ^3.1
 - Add phpcs configuration file
 - Add useless files to the gitignore
 - Add standard version configuration file
+- Add static analysis and tests workflow
 - Add git attributes file include export ignores
+- Change php version on static workflow
 - Add required scripts to composer configs
 - Add testdox to test unit script
-- Add slim/psr7 package ^1.4
-- Add slim/slim package ^4.8
-- Add php-di/slim-bridge package ^3.1
-
-### Refactor
-
-- Remove use test case and use traits instead
-- Move setting up server request factory to the app test trait
-
-### Testing
-
-- Setup app configs and setup test case
-- Add some tests for test response
-- Cleanup and optimize test case codes
+- Replace pest by phpunit for tests
 
 <!-- generated by git-cliff -->
