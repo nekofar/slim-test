@@ -28,6 +28,12 @@ final class TestResponseTest extends TestCase
             ->assertSee('hello, world');
     }
 
+    public function testUpload(): void
+    {
+        $this->post('/upload')
+            ->assertJson(['file' => 'uploaded']);
+    }
+
     public function testPut(): void
     {
         $this->put('/text/plain')
