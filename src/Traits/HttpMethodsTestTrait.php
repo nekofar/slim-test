@@ -36,6 +36,19 @@ trait HttpMethodsTestTrait
     }
 
     /**
+     * Visit the given URI with a HEAD request.
+     *
+     * @param array<string, array<string>|string> $headers
+     * @param string $uri
+     */
+    final public function head(string $uri, array $headers = []): TestResponse
+    {
+        $request = $this->createRequest(RequestMethodInterface::METHOD_HEAD, $uri);
+
+        return $this->send($request, $headers);
+    }
+
+    /**
      * Visit the given URI with a GET request.
      *
      * @param array<string, array<string>|string> $headers
