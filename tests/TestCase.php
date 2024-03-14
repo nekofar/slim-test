@@ -70,6 +70,11 @@ abstract class TestCase extends BaseTestCase
             return $response;
         });
 
+        $this->app->any('/upload', function (Response $response): Response {
+            $response->getBody()->write('{"file":"uploaded"}');
+            return $response;
+        });
+
         $this->app->get('/head/{type}', function (Request $request, Response $response, string $type): Response {
             if ('test' === $type) {
                 $response = $response->withHeader('X-Test', $request->getHeader('X-Test'));

@@ -74,17 +74,17 @@ trait HttpMethodsTestTrait
         return $this->send($request, $headers);
     }
 
-	/**
-	 * Visit the given URI with a POST request and upload a file.
-	 *
- 	 * @param string $uri
-	 * @param string $file
-	 * @param string $mime
-	 * @param string $name
-	 * @param array<string, mixed>  $data
-	 * @param array<string, string> $headers
-	 */
-	final public function postUpload(string $uri, string $file, string $mime, string $name = 'file', array $data = [], array $headers = []): TestResponse
+    /**
+     * Visit the given URI with a POST request and upload a file.
+     *
+     * @param string $uri
+     * @param string $file
+     * @param string $mime
+     * @param string $name
+     * @param array<string, mixed>  $data
+     * @param array<string, array<string>|string> $headers
+     */
+    final public function postUpload(string $uri, string $file, string $mime, string $name = 'file', array $data = [], array $headers = []): TestResponse
     {
         // Create a Slim Psr7 Factory to create requests and streams
         $factory       = new ServerRequestFactory();
