@@ -16,6 +16,12 @@ use PHPUnit\Framework\AssertionFailedError;
 
 final class TestResponseTest extends TestCase
 {
+    public function testHead(): void
+    {
+        $this->head('/text/plain')
+            ->assertOk();
+    }
+
     public function testGet(): void
     {
         $this->get('/text/plain')
