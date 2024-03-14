@@ -90,12 +90,23 @@ trait HttpMethodsTestTrait
         $factory       = new ServerRequestFactory();
         $uploadedFiles = [];
 
+        // Copy the original file to the temporary file
+        // This is done so that the original image can be kept in place for testing
+        // and the temporary file can be used for the upload since more than likely
+        // the upload will move the file to a new location and we don't want to
+        // lose the original testing file
+
+        $tempFile = tempnam(sys_get_temp_dir(), 'postUpload_');
+        if (!copy($file, $tempFile)) {
+            throw new \RuntimeException('Failed to copy the file');
+        }
+
         // Create a Slim Psr7 UploadedFile instance
         $uploadedFile = new UploadedFile(
-            $file,
-            $name,
+            $tempFile,
+            basename($file),
             $mime,
-            filesize($file),
+            filesize($tempFile),
             UPLOAD_ERR_OK,
         );
         $uploadedFiles[$name] = $uploadedFile;
