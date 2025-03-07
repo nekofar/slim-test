@@ -12,7 +12,7 @@ declare(strict_types=1);
 namespace Tests;
 
 use Fig\Http\Message\StatusCodeInterface;
-use PHPUnit\Framework\AssertionFailedError;
+use PHPUnit\Framework\ExpectationFailedException;
 
 final class TestResponseTest extends TestCase
 {
@@ -115,7 +115,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertOk(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 200.');
 
         $this->get('/status/500')
@@ -124,7 +124,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertCreated(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 201.');
 
         $this->post('/status/500')
@@ -133,7 +133,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertNotFound(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 404.');
 
         $this->post('/status/500')
@@ -142,7 +142,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertForbidden(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 403.');
 
         $this->post('/status/500')
@@ -151,7 +151,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertUnauthorized(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 401.');
 
         $this->post('/status/500')
@@ -160,7 +160,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertUnprocessable(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 422.');
 
         $this->post('/status/500')
@@ -169,7 +169,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertBadRequest(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 400.');
 
         $this->post('/status/500')
@@ -178,7 +178,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertMethodNotAllowed(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 405.');
 
         $this->post('/status/500')
@@ -187,7 +187,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertGone(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 410.');
 
         $this->post('/status/500')
@@ -196,7 +196,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertInternalServerError(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 404 matches expected 500.');
 
         $this->get('/status/404')
@@ -205,7 +205,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertNotImplemented(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 501.');
 
         $this->get('/status/500')
@@ -214,7 +214,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertNoContentAsserts204StatusCodeByDefault(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 204.');
 
         $this->post('/status/500')
@@ -223,7 +223,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertNoContentAssertsExpectedStatusCode(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 500 matches expected 418.');
 
         $this->post('/status/500')
@@ -232,7 +232,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertNoContentAssertsEmptyContent(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Response content is not empty');
 
         $this->get('/text/plain')
@@ -241,7 +241,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertStatus(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Failed asserting that 200 matches expected 500.');
 
         $this->post('/status/200')
@@ -254,7 +254,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertJsonStrict(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->getJson('/json/four')
             ->assertJson(['one' => '1'], true);
@@ -265,7 +265,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertJsonCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->getJson('/json/two')
             ->assertJson(['foo' => 'baz']);
@@ -285,7 +285,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertJsonWithNull(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Invalid JSON was returned from the route.');
 
         $this->get('/text/plain')
@@ -297,7 +297,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertSimilarJsonCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->get('/json/two')
             ->assertSimilarJson(['bar' => 'qux', 'foo' => 'baz']);
@@ -335,7 +335,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertExactJsonCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->getJson('/json/two')
             ->assertExactJson(['foo' => 'baz', 'bar' => 'qux']);
@@ -358,7 +358,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertJsonPathCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->get('/json/one')
             ->assertJsonPath('hello', 'earth');
@@ -381,7 +381,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertJsonFragmentCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->getJson('/json/two')
             ->assertJsonFragment(['foo' => 'baz']);
@@ -407,7 +407,7 @@ final class TestResponseTest extends TestCase
      */
     public function testAssertJsonCountCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->getJson('/json/one')
             ->assertJsonCount(10);
@@ -421,7 +421,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertSeeCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->get('/text/plain')
             ->assertSee('hello, earth');
@@ -435,7 +435,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertDontSeeCanFail(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
 
         $this->get('/text/plain')
             ->assertDontSee('hello, world');
@@ -443,7 +443,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertHeader(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Header [X-Wrong] not present on response.');
 
         $this->withHeader('X-Test', 'Test')
@@ -453,7 +453,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertHeaderWithValue(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Header [X-Test] was found, but value [Test] does not match [Wrong].');
 
         $this->withHeader('X-Test', 'Test')
@@ -463,7 +463,7 @@ final class TestResponseTest extends TestCase
 
     public function testAssertHeaderMissing(): void
     {
-        $this->expectException(AssertionFailedError::class);
+        $this->expectException(ExpectationFailedException::class);
         $this->expectExceptionMessage('Unexpected header [Authorization] is present on response.');
 
         $this->withToken(base64_encode('test:123456'), 'Basic')
